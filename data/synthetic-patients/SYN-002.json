@@ -1,39 +1,37 @@
 {
   "id": "SYN-002",
-  "mrn": "SYN-MRN-100002",
+  "mrn": "SYN-MRN-200002",
   "synthetic": true,
-  "name": "Priya Raman",
-  "birthDate": "1968-06-02",
-  "sex": "female",
-  "preferredLanguage": "en",
-  "advanceDirectiveOnFile": false,
+  "name": "Marcus Lee",
+  "birthDate": "1980-05-12",
+  "sex": "male",
+  "services": ["HRT/TRT", "Proactive Medical Care"],
   "conditions": [
-    { "code": "E11.9", "display": "Type 2 diabetes mellitus without complications", "onset": "2017-09-05", "status": "active", "tags": ["diabetes"] },
-    { "code": "E66.9", "display": "Obesity, unspecified", "onset": "2015-03-22", "status": "active", "tags": ["obesity"] }
+    { "code": "E29.1", "display": "Testicular hypofunction (hypogonadism)", "onset": "2024-10-15", "status": "active", "tags": ["hypogonadism"] }
   ],
   "medications": [
-    { "name": "Metformin", "dose": "1000 mg", "route": "PO", "frequency": "BID", "class": "biguanide", "start": "2017-09-05", "status": "active" }
+    { "name": "Testosterone cypionate", "dose": "160 mg", "route": "IM", "frequency": "weekly", "class": "androgen", "start": "2024-11-04", "status": "active" }
   ],
   "labs": [
-    { "code": "4548-4", "display": "Hemoglobin A1c", "value": 9.1, "unit": "%", "date": "2026-01-20", "interpretation": "H" },
-    { "code": "98979-8", "display": "eGFR (CKD-EPI 2021)", "value": 72, "unit": "mL/min/1.73m2", "date": "2026-01-20", "interpretation": "N" },
-    { "code": "13457-7", "display": "LDL cholesterol (calculated)", "value": 142, "unit": "mg/dL", "date": "2026-01-20", "interpretation": "H" }
+    { "code": "2857-1", "display": "PSA", "value": 0.9, "unit": "ng/mL", "date": "2025-08-15", "interpretation": "N" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 47.1, "unit": "%", "date": "2026-03-18", "interpretation": "N" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 49.8, "unit": "%", "date": "2026-06-17", "interpretation": "N" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 52.6, "unit": "%", "date": "2026-09-27", "interpretation": "H" },
+    { "code": "2986-8", "display": "Testosterone, total", "value": 812, "unit": "ng/dL", "date": "2026-09-27", "interpretation": "N" }
   ],
   "vitals": [
-    { "code": "8480-6", "display": "Systolic blood pressure", "value": 132, "unit": "mmHg", "dateTime": "2026-01-20T09:30:00" }
-  ],
-  "immunizations": [
-    { "vaccine": "influenza", "date": "2025-10-05" }
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 138, "unit": "mmHg", "dateTime": "2026-06-17T08:30:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 86, "unit": "mmHg", "dateTime": "2026-06-17T08:30:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 136, "unit": "mmHg", "dateTime": "2026-09-27T08:40:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 84, "unit": "mmHg", "dateTime": "2026-09-27T08:40:00" }
   ],
   "screenings": [
-    { "type": "mammogram", "date": "2025-03-11", "result": "BI-RADS 1" },
-    { "type": "fit", "date": "2026-02-01", "result": "negative" },
-    { "type": "retinal_exam", "date": "2024-11-18", "result": "no retinopathy" }
+    { "type": "fit", "date": "2026-01-10", "result": "negative" }
   ],
   "appointments": [
-    { "date": "2026-11-20", "department": "Primary Care", "reason": "Diabetes follow-up" }
+    { "date": "2026-10-05", "service": "HRT/TRT", "reason": "TRT follow-up" }
   ],
   "encounters": [
-    { "type": "outpatient", "date": "2026-01-20", "reason": "Diabetes follow-up" }
+    { "type": "lab draw", "date": "2026-09-27", "reason": "Quarterly TRT labs" }
   ]
 }

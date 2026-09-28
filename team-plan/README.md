@@ -24,7 +24,12 @@ The goal is **not** to wire in the most sponsors. It's to:
 Every scope decision below serves those two goals. If a feature doesn't help the pitch, cut it.
 
 > **J-Harmony: "A Proactive Medical Care Club."** The **Big 5**: Concierge Care, HRT/TRT, Aesthetics,
-> Longevity, and Proactive Medical Care. The demo builds to *proactive*. See §6.
+> Longevity, and Proactive Medical Care.
+>
+> **Cyber7Group** runs the intelligence and infrastructure, and **J-Harmony** runs the medicine. Together
+> it's a proactive medical care company that operates **exactly like an MSP, but now with AI**: monitor
+> every member continuously, catch problems before they become outages, and escalate by severity. The demo
+> builds to *proactive*. See §6.
 
 ---
 
@@ -37,12 +42,17 @@ runs our triage skill, which:
 
 1. Loads the patient record.
 2. Runs a **deterministic rules engine** that raises alerts in three tiers:
-   - 🔴 **Clinical**: safety-critical, act now (critical potassium, positive sepsis screen, dangerous INR).
-   - 🟠 **Nudge**: care gaps and preventive care (overdue A1c, missing statin, missing flu shot, overdue screening).
-   - 🔵 **Informational**: FYI context (upcoming appointment, interpreter needed, new normal results).
-3. Writes the patient, their meds and conditions, and the alerts into a **Neo4j knowledge graph**. The
-   graph connects drug classes → known interactions → alerts, so it can answer **population** questions:
-   *"Which patients on an ACE inhibitor or ARB have a clinical alert?"*
+   - 🔴 **Clinical** (the MSP "P1 incident"): act now. Hematocrit ≥ 54% on TRT, BP ≥ 180/120, creatinine
+     up 1.5× on a GLP-1.
+   - 🟠 **Nudge** (the "maintenance ticket"): get ahead of it. Hematocrit trending up on TRT, BP creeping up
+     on TRT, PSA overdue, BUN/creatinine rising on a GLP-1 (hydrate), A1c or colorectal screening overdue.
+   - 🔵 **Informational** (the "status update"): weight-loss progress on a GLP-1, upcoming appointment,
+     new normal results.
+
+   The data is built around J-Harmony's real lab stories, **TRT** and **GLP-1** (see `data/README.md`).
+3. Writes the member, their Big 5 services, therapies and alerts into a **Neo4j knowledge graph**. The
+   graph connects therapy → known risk → alert, so it can answer **population** questions:
+   *"Which TRT members have a hematocrit problem?"*
 4. Has the LLM write a **plain-language rationale** per alert and a one-paragraph patient summary.
    **The LLM explains; it never decides whether an alert fires.** That's the safety story.
 5. Posts the results back, and the portal renders colour-coded alert cards.
@@ -55,7 +65,7 @@ runs our triage skill, which:
 
 | Sponsor | What it gives us | Verdict |
 | --- | --- | --- |
-| **Neo4j** (AuraDB Free + MCP server) | The agent can read and write a graph database during a ticket | ✅ **Core.** Patient ↔ medication ↔ drug class ↔ interaction ↔ alert is naturally a graph. It moves the demo from one patient at a time to population health, which is an investor-grade story. |
+| **Neo4j** (AuraDB Free + MCP server) | The agent can read and write a graph database during a ticket | ✅ **Core.** Member ↔ service ↔ therapy ↔ risk ↔ alert is naturally a graph. It moves the demo from one patient at a time to population health, which is an investor-grade story. |
 | **Crusoe / Nebius via OpenRouter** | Runs the agent's LLM on open-weight models (Qwen, Kimi, GPT-OSS) hosted on their GPUs, via `./scripts/switch-llm.sh gateway` | 🟡 **Optional, last hour only.** Useful as one line in the pitch: because rules decide, swapping to an open model **doesn't change which alerts fire**. That's portability and cost control, and healthcare buyers care about both. The risk: open models are weaker at tool calling and can break the live demo. Only do it if the 3:30 checkpoint is green, **never demo on it**, and switch back with `./scripts/switch-llm.sh anthropic`. |
 | **OpenRouter** | Not a separate tool. It's the gateway Crusoe/Nebius are reached through. | Same as above |
 | **Vultr** | The agent can manage Vultr cloud servers and networks through the API | ❌ **Skip.** Cloud infrastructure management has nothing to do with clinical alerting. Wiring it in would be exactly the "plugged in, doing nothing" the judges penalise. |
@@ -81,7 +91,7 @@ runs our triage skill, which:
 | Extension: manifest, C# backend, Angular UI, `SKILL.md`, build/deploy, Neo4j scope wiring in the portal | **Jason** | `extensions/clinical-alerts/` | `jason/extension` |
 | Rules engine (`triage.py`), rules, tests | **Stephen** | `engine/` | `stephen/engine` |
 | Neo4j: graph model, seed loader, Cypher queries | **Stephen** | `engine/graph/` | `stephen/engine` |
-| Synthetic patients, expected alerts, interaction knowledge | **Stephen** (seeded already) | `data/` | `stephen/engine` |
+| Synthetic members, expected alerts, therapy-risk knowledge | **Stephen** (seeded already) | `data/` | `stephen/engine` |
 | Interface between the two | **Both** | `team-plan/CONTRACT.md` | `main` only |
 
 **The one rule that avoids merge pain: Jason doesn't edit `engine/` or `data/`, and Stephen doesn't edit
@@ -142,7 +152,7 @@ If a checkpoint slips by 30+ minutes, cut in this order: optional items → UI p
 
 ---
 
-## 6. Demo script: **J-Harmony, "A Proactive Medical Care Club"**
+## 6. Demo script: **J-Harmony × Cyber7Group, "A Proactive Medical Care Club"**
 
 **Demo length isn't published.** Ask in the Hack Day Slack / hackday@duplocloud.net before the day. Plan
 for **3 minutes** and keep the 5-minute version ready. Jason speaks and Stephen drives the demo machine.
@@ -155,27 +165,35 @@ for **3 minutes** and keep the 5-minute version ready. Jason speaks and Stephen 
 
 | Time | Who | Beat |
 | --- | --- | --- |
-| 0:00–0:30 | Jason | **J-Harmony + services** |
-| 0:30–2:00 | Jason talks, Stephen drives | **Live product**: SYN-007, then the Neo4j graph |
+| 0:00–0:30 | Jason | **J-Harmony × Cyber7Group**: the Big 5, run like an MSP with AI |
+| 0:30–2:00 | Jason talks, Stephen drives | **Live product**: SYN-001 David Park (TRT + GLP-1), then the Neo4j graph |
 | 2:00–2:40 | Jason | **Proactive**: how this agent powers J-Harmony's patient portal |
 | 2:40–3:00 | Both | **The reveal**: Stephen's photo, then he stands |
 
 ### Talk track (draft; make it your own)
 
-**0:00 — J-Harmony (30s)**
-> "I'm Jason, this is Stephen. We're building **J-Harmony — a Proactive Medical Care Club.**
-> Members get our **Big 5**: Concierge Care, HRT/TRT, Aesthetics, Longevity, and Proactive Medical Care.
-> Today, healthcare waits for you to get sick. We don't. Let us show you the engine behind that fifth one."
+**0:00 — J-Harmony × Cyber7Group (30s)**
+> "I'm Jason, this is Stephen. We're **J-Harmony — a Proactive Medical Care Club** — and **Cyber7Group**.
+> J-Harmony delivers the **Big 5**: Concierge Care, HRT/TRT, Aesthetics, Longevity, and Proactive Medical
+> Care. Cyber7Group runs the intelligence and infrastructure underneath. Put together, we run medicine
+> **exactly like an MSP runs IT, but now with AI.** We monitor every member, we catch problems before
+> they become outages, and we escalate by severity. Let us show you."
 
 **0:30 — Live product (90s)**, with Stephen driving:
-1. "Meet Grace, a synthetic member." Create the triage for **SYN-007** and narrate the live status.
-2. All three tiers land: 🔴 **Clinical** ("she's still on metformin and her kidney function just dropped
-   to 27, which is dangerous"), 🟠 **Nudge** ("her mammogram is overdue"), 🔵 **Informational** ("nephrology
-   visit Friday").
-3. Open the Clinical card: "Every alert shows its evidence. The rules decide, and the AI explains in
-   plain language. It never invents an alert."
-4. Switch to Neo4j: "Now across the whole club: which members on blood-pressure drugs have a
-   clinical alert?" The graph lights up SYN-001 and SYN-007. "One patient becomes population health."
+1. "Meet David, a synthetic member on **TRT and tirzepatide**, two of our most common programs." Create
+   the triage for **SYN-001** and narrate the live status.
+2. All three tiers land, like MSP severities:
+   - 🔴 **Clinical (P1):** "His hematocrit hit 54.8. It's climbed every quarter on testosterone. That's
+     thick blood and clot risk, so his care team gets it today."
+   - 🟠 **Nudge (maintenance):** "His blood pressure is creeping up on TRT. And his BUN is 26: the
+     tirzepatide makes him nauseous and he's not drinking enough. Hydrate now, before it becomes a
+     kidney problem."
+   - 🔵 **FYI:** "And the good news: he's down **14% body weight**."
+3. Open the Clinical card: "Every alert shows its evidence, here the hematocrit trend. The rules decide,
+   and the AI explains in plain language. It never invents an alert."
+4. Switch to Neo4j: "Now across the whole club: **which TRT members have a hematocrit problem?**" The
+   graph lights up **David and Marcus (SYN-002)**. "Marcus isn't in trouble yet. He's at 52.6 and
+   trending up. We call him *before* he's David. That's proactive."
 
 **2:00 — Proactive (40s)**
 > "Here's where it goes. This agent runs behind J-Harmony's **patient portal**. Every night it
@@ -189,15 +207,17 @@ for **3 minutes** and keep the 5-minute version ready. Jason speaks and Stephen 
 >
 > *Flip to Stephen's photo: same black shirt, 70 lb lighter.* "Stephen, stand up."
 >
-> *(Applause, hopefully.)* "That's J-Harmony. Thank you."
+> *(Applause, hopefully.)* "That's J-Harmony and Cyber7Group. Thank you."
 
 Keep the reveal to **20 seconds or less**. Let the applause happen, but don't wait on it. Use the last
 line as the cue that you're done.
 
 ### 5-minute version (if we get it)
 
-Add after SYN-007: **SYN-003 Daniel Reyes** (a sepsis screen fires from vitals + lactate, and the Spanish
-interpreter flag shows) and **SYN-006 Sofia Alvarez** (FYIs only: "it doesn't cry wolf"). Before "Proactive",
+Add after David: **SYN-003 Priya Raman** (semaglutide dose went up, she's been vomiting, and creatinine
+jumped 0.9 → 1.6: "this is what the hydration nudge prevents"), then the second graph query (*GLP-1 members
+with a kidney or hydration alert* → SYN-001, SYN-003, SYN-004), then **SYN-006 Elena Brooks** (a longevity
+member with FYIs only: "it doesn't cry wolf"). Before "Proactive",
 add 20s of **why it's trustworthy**: deterministic rules + tests, a knowledge graph, and a swappable LLM,
 all hot-loaded into a running DuploCloud platform with no restart.
 
@@ -206,7 +226,7 @@ all hot-loaded into a running DuploCloud platform with no restart.
 - [ ] **Stephen's photo** (same black shirt, 70 lb lighter), stored on the demo machine locally and **not in
       this repo**. Have it open in a background window or as a slide so the flip is one keystroke.
 - [ ] J-Harmony title slide/logo (optional, for 0:00) and a closing slide with the one-liner + contact.
-- [ ] Browser tabs pre-opened on the demo machine: portal (Alert Triage list), Neo4j Browser with the cohort query saved.
+- [ ] Browser tabs pre-opened on the demo machine: portal (Alert Triage list), Neo4j Browser with both cohort queries saved.
 - [ ] Rehearse to a timer twice. If you run over at 2:00, skip the Neo4j step, never the reveal.
 
 ---
@@ -217,7 +237,7 @@ all hot-loaded into a running DuploCloud platform with no restart.
 - [ ] Creating a triage for any of `SYN-001`…`SYN-007` goes Processing → Complete, with live sub-status updates.
 - [ ] The detail page groups alerts Clinical / Nudge / Informational, each with title, rationale, evidence and action.
 - [ ] Each patient's alerts exactly match `data/expected-alerts.json` (rule IDs).
-- [ ] Every completed triage writes its alerts into Neo4j, and the cohort query returns SYN-001 and SYN-007.
+- [ ] Every completed triage writes its alerts into Neo4j, and both cohort queries match `cohorts` in `data/expected-alerts.json`.
 - [ ] If Neo4j is unreachable, triage still completes and marks the graph step skipped.
 - [ ] A missing or bad patient ID ends in **Failed** with a readable fault, not a hang.
 - [ ] Every screen is labelled **synthetic data, not for clinical use**.

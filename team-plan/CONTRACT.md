@@ -38,26 +38,28 @@ Convenience: `python3 triage.py --patient-id SYN-003 --data-dir <dir>` resolves 
 
 ```json
 {
-  "patientId": "SYN-007",
-  "patientName": "Grace Thompson",
-  "age": 67,
-  "sex": "female",
+  "patientId": "SYN-001",
+  "patientName": "David Park",
+  "age": 51,
+  "sex": "male",
+  "services": ["Concierge Care", "HRT/TRT", "Proactive Medical Care"],
   "asOf": "2026-09-29",
   "engineVersion": "0.1.0",
   "synthetic": true,
-  "counts": { "clinical": 1, "nudge": 1, "informational": 2 },
+  "counts": { "clinical": 1, "nudge": 2, "informational": 3 },
   "alerts": [
     {
-      "id": "SYN-007:CLIN-METFORMIN-RENAL",
-      "ruleId": "CLIN-METFORMIN-RENAL",
+      "id": "SYN-001:CLIN-TRT-ERYTHROCYTOSIS",
+      "ruleId": "CLIN-TRT-ERYTHROCYTOSIS",
       "tier": "clinical",
       "priority": 1,
-      "title": "Metformin with eGFR below 30",
-      "detail": "Active metformin 500 mg BID; eGFR 27 mL/min/1.73m2 on 2026-09-27.",
-      "recommendedAction": "Review metformin: contraindicated at eGFR < 30.",
+      "title": "Hematocrit 54.8% on testosterone therapy",
+      "detail": "Hematocrit 54.8% on 2026-09-26 (up from 52.1% and 49.5%) on testosterone cypionate 180 mg weekly.",
+      "recommendedAction": "Care team review today: consider holding or reducing TRT dose and repeat CBC.",
       "evidence": [
-        { "kind": "lab", "code": "98979-8", "display": "eGFR (CKD-EPI 2021)", "value": 27, "unit": "mL/min/1.73m2", "date": "2026-09-27" },
-        { "kind": "medication", "display": "Metformin 500 mg PO BID", "date": "2019-04-10" }
+        { "kind": "lab", "code": "4544-3", "display": "Hematocrit", "value": 54.8, "unit": "%", "date": "2026-09-26" },
+        { "kind": "lab", "code": "4544-3", "display": "Hematocrit", "value": 52.1, "unit": "%", "date": "2026-06-15" },
+        { "kind": "medication", "display": "Testosterone cypionate 180 mg IM weekly", "date": "2024-06-10" }
       ],
       "rationale": null
     }
@@ -102,20 +104,22 @@ and **carry on**. Graph failure never fails a triage.
 ## 6. Neo4j graph model (Stephen designs, the skill writes via MCP)
 
 ```
-(:Patient {id, name, age, sex, synthetic:true})
+(:Member {id, name, age, sex, synthetic:true})
+  -[:ENROLLED_IN]->(:Service {name})                  // J-Harmony Big 5
   -[:HAS_CONDITION]->(:Condition {code, display})
-  -[:TAKES]->(:Medication {name})-[:IN_CLASS]->(:DrugClass {name})
+  -[:TAKES]->(:Medication {name})-[:IN_CLASS]->(:TherapyClass {name})
   -[:HAS_ALERT {asOf}]->(:Alert {id, ruleId, tier, title})
-(:DrugClass)-[:INTERACTS_WITH {id, risk, severity}]->(:DrugClass | :Condition)
-(:Alert)-[:EXPLAINED_BY]->(:Interaction {id})      // when a rule relates to data/drug-interactions.json
+(:TherapyClass)-[:HAS_RISK]->(:Risk {id, risk, monitor})   // from data/therapy-risks.json
+(:Alert)-[:EXPLAINED_BY]->(:Risk)                          // via Risk.relatedRules
 ```
 
-- The seed (all 7 patients + `data/drug-interactions.json`) is loaded ahead of time by
+- The seed (all 7 members + `data/therapy-risks.json`) is loaded ahead of time by
   `engine/graph/seed.py`, which runs on Stephen's laptop with the `neo4j` pip driver.
-- At triage time the skill **MERGEs** the `Patient` node and its `HAS_ALERT` alerts, replacing that
+- At triage time the skill **MERGEs** the `Member` node and its `HAS_ALERT` alerts, replacing that
   patient's previous alerts. It must be idempotent: re-running a triage doesn't duplicate nodes.
 - Stephen supplies the exact Cypher in `engine/graph/queries.cypher`. That includes the write statement
-  the skill uses and the demo cohort query:
-  *patients on an `ACE inhibitor` or `ARB` with a `clinical` alert* → expected result: **SYN-001, SYN-007**.
+  the skill uses and the two demo cohort queries (expected results are in `data/expected-alerts.json` → `cohorts`):
+  - *TRT members (`androgen`) with a hematocrit alert* → **SYN-001, SYN-002** (the short-demo query)
+  - *GLP-1 members with a kidney or hydration alert* → **SYN-001, SYN-003, SYN-004**
 - The skill uses the MCP tools (`write-neo4j-cypher`, `read-neo4j-cypher`) exposed by `neo4j-mcp-scope`.
   The triage resource must select that scope.

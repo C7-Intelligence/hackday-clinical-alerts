@@ -1,44 +1,44 @@
 {
   "id": "SYN-001",
-  "mrn": "SYN-MRN-100001",
+  "mrn": "SYN-MRN-200001",
   "synthetic": true,
-  "name": "Walter Okafor",
-  "birthDate": "1954-03-14",
+  "name": "David Park",
+  "birthDate": "1975-03-02",
   "sex": "male",
-  "preferredLanguage": "en",
-  "advanceDirectiveOnFile": true,
+  "services": ["Concierge Care", "HRT/TRT", "Proactive Medical Care"],
   "conditions": [
-    { "code": "N18.32", "display": "Chronic kidney disease, stage 3b", "onset": "2021-06-01", "status": "active", "tags": ["ckd"] },
-    { "code": "I10", "display": "Essential hypertension", "onset": "2008-02-11", "status": "active", "tags": ["hypertension"] },
-    { "code": "I50.22", "display": "Chronic systolic heart failure", "onset": "2022-10-19", "status": "active", "tags": ["heart_failure"] }
+    { "code": "E29.1", "display": "Testicular hypofunction (hypogonadism)", "onset": "2024-05-20", "status": "active", "tags": ["hypogonadism"] },
+    { "code": "E66.811", "display": "Obesity, class 1", "onset": "2023-01-10", "status": "active", "tags": ["obesity"] }
   ],
   "medications": [
-    { "name": "Lisinopril", "dose": "20 mg", "route": "PO", "frequency": "daily", "class": "ACE inhibitor", "start": "2015-04-02", "status": "active" },
-    { "name": "Spironolactone", "dose": "25 mg", "route": "PO", "frequency": "daily", "class": "potassium-sparing diuretic", "start": "2026-08-20", "status": "active" },
-    { "name": "Furosemide", "dose": "40 mg", "route": "PO", "frequency": "daily", "class": "loop diuretic", "start": "2022-10-20", "status": "active" },
-    { "name": "Atorvastatin", "dose": "40 mg", "route": "PO", "frequency": "nightly", "class": "statin", "start": "2016-01-15", "status": "active" }
+    { "name": "Testosterone cypionate", "dose": "180 mg", "route": "IM", "frequency": "weekly", "class": "androgen", "start": "2024-06-10", "status": "active" },
+    { "name": "Tirzepatide (GIP/GLP-1)", "dose": "7.5 mg", "route": "SC", "frequency": "weekly", "class": "GLP-1 receptor agonist", "start": "2026-04-01", "status": "active" }
   ],
   "labs": [
-    { "code": "2823-3", "display": "Potassium", "value": 5.2, "unit": "mmol/L", "date": "2026-08-15", "interpretation": "H" },
-    { "code": "2823-3", "display": "Potassium", "value": 6.1, "unit": "mmol/L", "date": "2026-09-28", "interpretation": "HH" },
-    { "code": "98979-8", "display": "eGFR (CKD-EPI 2021)", "value": 38, "unit": "mL/min/1.73m2", "date": "2026-09-28", "interpretation": "L" },
-    { "code": "2160-0", "display": "Creatinine", "value": 1.8, "unit": "mg/dL", "date": "2026-09-28", "interpretation": "H" }
+    { "code": "4544-3", "display": "Hematocrit", "value": 49.5, "unit": "%", "date": "2026-02-20", "interpretation": "N" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 52.1, "unit": "%", "date": "2026-06-15", "interpretation": "H" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 54.8, "unit": "%", "date": "2026-09-26", "interpretation": "HH" },
+    { "code": "2986-8", "display": "Testosterone, total", "value": 1040, "unit": "ng/dL", "date": "2026-09-26", "interpretation": "H" },
+    { "code": "2857-1", "display": "PSA", "value": 1.2, "unit": "ng/mL", "date": "2026-06-15", "interpretation": "N" },
+    { "code": "2160-0", "display": "Creatinine", "value": 1.0, "unit": "mg/dL", "date": "2026-06-15", "interpretation": "N" },
+    { "code": "2160-0", "display": "Creatinine", "value": 1.1, "unit": "mg/dL", "date": "2026-09-26", "interpretation": "N" },
+    { "code": "3094-0", "display": "BUN", "value": 26, "unit": "mg/dL", "date": "2026-09-26", "interpretation": "H" }
   ],
   "vitals": [
-    { "code": "8480-6", "display": "Systolic blood pressure", "value": 128, "unit": "mmHg", "dateTime": "2026-09-15T10:05:00" },
-    { "code": "8867-4", "display": "Heart rate", "value": 72, "unit": "/min", "dateTime": "2026-09-15T10:05:00" }
-  ],
-  "immunizations": [
-    { "vaccine": "influenza", "date": "2026-09-10" },
-    { "vaccine": "pneumococcal (PCV20)", "date": "2023-10-02" }
+    { "code": "29463-7", "display": "Body weight", "value": 112.0, "unit": "kg", "dateTime": "2026-03-28T09:00:00" },
+    { "code": "29463-7", "display": "Body weight", "value": 96.3, "unit": "kg", "dateTime": "2026-09-26T09:00:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 144, "unit": "mmHg", "dateTime": "2026-09-12T09:10:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 90, "unit": "mmHg", "dateTime": "2026-09-12T09:10:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 148, "unit": "mmHg", "dateTime": "2026-09-26T09:05:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 94, "unit": "mmHg", "dateTime": "2026-09-26T09:05:00" }
   ],
   "screenings": [
-    { "type": "colonoscopy", "date": "2019-05-02", "result": "normal" }
+    { "type": "colonoscopy", "date": "2021-08-19", "result": "normal" }
   ],
   "appointments": [
-    { "date": "2026-10-06", "department": "Cardiology", "reason": "Heart failure follow-up" }
+    { "date": "2026-10-02", "service": "HRT/TRT", "reason": "TRT dose review" }
   ],
   "encounters": [
-    { "type": "outpatient", "date": "2026-09-15", "reason": "Primary care visit" }
+    { "type": "concierge visit", "date": "2026-09-26", "reason": "Quarterly TRT + GLP-1 labs; reports mild nausea, low water intake" }
   ]
 }

@@ -48,8 +48,9 @@ Then do this in order:
    ticket using that scope: "What schema do you see in neo4j?"
 5. **UI requirements:**
    - List view: patient name + ID, and three coloured count chips (clinical / nudge / informational).
-   - Create form: `patientId` is a dropdown of the 7 patients in `data/synthetic-patients/index.json`,
-     shown as "SYN-00X — Name, age sex". Bake the list into the frontend at build time.
+   - Create form: `patientId` is a dropdown of the 7 members in `data/synthetic-patients/index.json`,
+     shown as "SYN-00X — Name, age sex · services". Bake the list into the frontend at build time.
+   - Show the member's J-Harmony services as chips on the detail page.
    - Detail page: summary banner, then Clinical / Nudge / Informational sections of alert cards (title,
      detail, rationale, recommended action, collapsible evidence table). Use the CONTRACT colours, and show
      an empty state per tier.
@@ -61,8 +62,8 @@ Then do this in order:
    (on any error, post `Graph unavailable — skipped` and continue) → if `explain`, fill each `rationale`
    and the `summary` using Stephen's explain instructions (grounded only in `detail` + `evidence`; never add,
    remove or re-tier alerts) → post results → `Complete`.
-7. Verify all 7 patients end to end against `data/expected-alerts.json`. Then run the cohort query and
-   confirm it returns SYN-001 and SYN-007.
+7. Verify all 7 patients end to end against `data/expected-alerts.json`. Then run both cohort queries and
+   confirm they match `cohorts` in `data/expected-alerts.json`.
 8. After merging to `main`, write `team-plan/DEPLOY.md`: the exact commands to deploy `main` on a fresh
    machine (pull, `sync-engine.sh`, build, deploy, and the portal steps for `neo4j-mcp-scope`). Stephen uses it on
    the demo machine. Keep my laptop deployed with the same build as the backup.

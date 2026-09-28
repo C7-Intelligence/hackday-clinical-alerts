@@ -1,42 +1,33 @@
 {
   "id": "SYN-004",
-  "mrn": "SYN-MRN-100004",
+  "mrn": "SYN-MRN-200004",
   "synthetic": true,
-  "name": "Eleanor Whitfield",
-  "birthDate": "1945-01-30",
+  "name": "Sofia Alvarez",
+  "birthDate": "1988-07-22",
   "sex": "female",
-  "preferredLanguage": "en",
-  "advanceDirectiveOnFile": true,
+  "services": ["Aesthetics", "Proactive Medical Care"],
   "conditions": [
-    { "code": "I48.91", "display": "Atrial fibrillation, unspecified", "onset": "2021-03-08", "status": "active", "tags": ["afib"] },
-    { "code": "I10", "display": "Essential hypertension", "onset": "2004-07-19", "status": "active", "tags": ["hypertension"] },
-    { "code": "N39.0", "display": "Urinary tract infection", "onset": "2026-09-26", "status": "active", "tags": ["infection"] }
+    { "code": "E66.811", "display": "Obesity, class 1", "onset": "2025-11-01", "status": "active", "tags": ["obesity"] }
   ],
   "medications": [
-    { "name": "Warfarin", "dose": "5 mg", "route": "PO", "frequency": "daily", "class": "vitamin K antagonist", "start": "2021-03-10", "status": "active" },
-    { "name": "Ciprofloxacin", "dose": "500 mg", "route": "PO", "frequency": "BID", "class": "fluoroquinolone", "start": "2026-09-26", "status": "active" },
-    { "name": "Metoprolol succinate", "dose": "50 mg", "route": "PO", "frequency": "daily", "class": "beta blocker", "start": "2021-03-10", "status": "active" }
+    { "name": "Semaglutide", "dose": "0.5 mg", "route": "SC", "frequency": "weekly", "class": "GLP-1 receptor agonist", "start": "2026-03-15", "status": "active" }
   ],
   "labs": [
-    { "code": "6301-6", "display": "INR", "value": 2.6, "unit": "{INR}", "date": "2026-09-01", "interpretation": "N" },
-    { "code": "6301-6", "display": "INR", "value": 5.2, "unit": "{INR}", "date": "2026-09-28", "interpretation": "HH" },
-    { "code": "718-7", "display": "Hemoglobin", "value": 12.4, "unit": "g/dL", "date": "2026-09-28", "interpretation": "N" }
+    { "code": "2160-0", "display": "Creatinine", "value": 0.7, "unit": "mg/dL", "date": "2026-06-01", "interpretation": "N" },
+    { "code": "2160-0", "display": "Creatinine", "value": 0.9, "unit": "mg/dL", "date": "2026-09-25", "interpretation": "N" },
+    { "code": "3094-0", "display": "BUN", "value": 22, "unit": "mg/dL", "date": "2026-09-25", "interpretation": "H" }
   ],
   "vitals": [
-    { "code": "8480-6", "display": "Systolic blood pressure", "value": 138, "unit": "mmHg", "dateTime": "2026-09-26T14:20:00" },
-    { "code": "8867-4", "display": "Heart rate", "value": 78, "unit": "/min", "dateTime": "2026-09-26T14:20:00" }
+    { "code": "29463-7", "display": "Body weight", "value": 84.0, "unit": "kg", "dateTime": "2026-03-10T11:00:00" },
+    { "code": "29463-7", "display": "Body weight", "value": 72.6, "unit": "kg", "dateTime": "2026-09-25T11:00:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 112, "unit": "mmHg", "dateTime": "2026-09-25T11:00:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 72, "unit": "mmHg", "dateTime": "2026-09-25T11:00:00" }
   ],
-  "immunizations": [
-    { "vaccine": "influenza", "date": "2026-09-20" },
-    { "vaccine": "zoster (RZV)", "date": "2020-05-14" }
-  ],
-  "screenings": [
-    { "type": "mammogram", "date": "2019-06-03", "result": "BI-RADS 2" }
-  ],
+  "screenings": [],
   "appointments": [
-    { "date": "2026-10-01", "department": "Anticoagulation Clinic", "reason": "INR recheck" }
+    { "date": "2026-10-09", "service": "Aesthetics", "reason": "Skin-laxity consult after weight loss" }
   ],
   "encounters": [
-    { "type": "urgent_care", "date": "2026-09-26", "reason": "Dysuria" }
+    { "type": "lab draw", "date": "2026-09-25", "reason": "GLP-1 monitoring labs" }
   ]
 }

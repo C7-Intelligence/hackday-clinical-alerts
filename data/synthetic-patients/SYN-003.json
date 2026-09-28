@@ -1,35 +1,36 @@
 {
   "id": "SYN-003",
-  "mrn": "SYN-MRN-100003",
+  "mrn": "SYN-MRN-200003",
   "synthetic": true,
-  "name": "Daniel Reyes",
-  "birthDate": "1981-11-19",
-  "sex": "male",
-  "preferredLanguage": "es",
-  "advanceDirectiveOnFile": false,
+  "name": "Priya Raman",
+  "birthDate": "1968-06-02",
+  "sex": "female",
+  "services": ["Concierge Care", "Proactive Medical Care"],
   "conditions": [
-    { "code": "L03.116", "display": "Cellulitis of left lower limb", "onset": "2026-09-26", "status": "active", "tags": ["infection"] }
+    { "code": "E11.9", "display": "Type 2 diabetes mellitus without complications", "onset": "2017-09-05", "status": "active", "tags": ["diabetes"] },
+    { "code": "E66.812", "display": "Obesity, class 2", "onset": "2015-03-22", "status": "active", "tags": ["obesity"] }
   ],
   "medications": [
-    { "name": "Cephalexin", "dose": "500 mg", "route": "PO", "frequency": "QID", "class": "cephalosporin", "start": "2026-09-26", "status": "active" }
+    { "name": "Semaglutide", "dose": "1.0 mg", "route": "SC", "frequency": "weekly", "class": "GLP-1 receptor agonist", "start": "2026-05-01", "status": "active" }
   ],
   "labs": [
-    { "code": "6690-2", "display": "WBC count", "value": 15.2, "unit": "10*3/uL", "date": "2026-09-29", "interpretation": "H" },
-    { "code": "2524-7", "display": "Lactate", "value": 3.1, "unit": "mmol/L", "date": "2026-09-29", "interpretation": "H" },
-    { "code": "2951-2", "display": "Sodium", "value": 138, "unit": "mmol/L", "date": "2026-09-29", "interpretation": "N" }
+    { "code": "4548-4", "display": "Hemoglobin A1c", "value": 8.2, "unit": "%", "date": "2026-02-10", "interpretation": "H" },
+    { "code": "2160-0", "display": "Creatinine", "value": 0.9, "unit": "mg/dL", "date": "2026-08-20", "interpretation": "N" },
+    { "code": "2160-0", "display": "Creatinine", "value": 1.6, "unit": "mg/dL", "date": "2026-09-28", "interpretation": "H" },
+    { "code": "3094-0", "display": "BUN", "value": 34, "unit": "mg/dL", "date": "2026-09-28", "interpretation": "H" },
+    { "code": "2823-3", "display": "Potassium", "value": 4.3, "unit": "mmol/L", "date": "2026-09-28", "interpretation": "N" }
   ],
   "vitals": [
-    { "code": "8310-5", "display": "Body temperature", "value": 38.9, "unit": "Cel", "dateTime": "2026-09-29T08:40:00" },
-    { "code": "8867-4", "display": "Heart rate", "value": 118, "unit": "/min", "dateTime": "2026-09-29T08:40:00" },
-    { "code": "9279-1", "display": "Respiratory rate", "value": 24, "unit": "/min", "dateTime": "2026-09-29T08:40:00" },
-    { "code": "8480-6", "display": "Systolic blood pressure", "value": 94, "unit": "mmHg", "dateTime": "2026-09-29T08:40:00" }
+    { "code": "29463-7", "display": "Body weight", "value": 98.0, "unit": "kg", "dateTime": "2026-04-20T10:00:00" },
+    { "code": "29463-7", "display": "Body weight", "value": 89.2, "unit": "kg", "dateTime": "2026-09-28T10:00:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 128, "unit": "mmHg", "dateTime": "2026-09-28T10:00:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 80, "unit": "mmHg", "dateTime": "2026-09-28T10:00:00" }
   ],
-  "immunizations": [
-    { "vaccine": "influenza", "date": "2026-09-15" }
+  "screenings": [
+    { "type": "fit", "date": "2026-02-01", "result": "negative" }
   ],
-  "screenings": [],
   "appointments": [],
   "encounters": [
-    { "type": "emergency", "date": "2026-09-29", "reason": "Worsening leg redness, fever" }
+    { "type": "concierge visit", "date": "2026-09-28", "reason": "Vomiting x3 days since semaglutide dose increase" }
   ]
 }

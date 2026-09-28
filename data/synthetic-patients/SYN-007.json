@@ -1,42 +1,27 @@
 {
   "id": "SYN-007",
-  "mrn": "SYN-MRN-100007",
+  "mrn": "SYN-MRN-200007",
   "synthetic": true,
-  "name": "Grace Thompson",
-  "birthDate": "1959-02-11",
-  "sex": "female",
-  "preferredLanguage": "en",
-  "advanceDirectiveOnFile": false,
+  "name": "James Whitaker",
+  "birthDate": "1971-09-03",
+  "sex": "male",
+  "services": ["Concierge Care", "Proactive Medical Care"],
   "conditions": [
-    { "code": "E11.22", "display": "Type 2 diabetes mellitus with diabetic chronic kidney disease", "onset": "2012-05-17", "status": "active", "tags": ["diabetes"] },
-    { "code": "N18.4", "display": "Chronic kidney disease, stage 4", "onset": "2026-07-15", "status": "active", "tags": ["ckd"] }
+    { "code": "E11.9", "display": "Type 2 diabetes mellitus without complications", "onset": "2020-01-14", "status": "active", "tags": ["diabetes"] }
   ],
   "medications": [
-    { "name": "Metformin", "dose": "500 mg", "route": "PO", "frequency": "BID", "class": "biguanide", "start": "2019-04-10", "status": "active" },
-    { "name": "Atorvastatin", "dose": "20 mg", "route": "PO", "frequency": "nightly", "class": "statin", "start": "2014-02-03", "status": "active" },
-    { "name": "Losartan", "dose": "50 mg", "route": "PO", "frequency": "daily", "class": "ARB", "start": "2018-08-21", "status": "active" }
+    { "name": "Metformin", "dose": "1000 mg", "route": "PO", "frequency": "BID", "class": "biguanide", "start": "2020-01-14", "status": "active" }
   ],
   "labs": [
-    { "code": "4548-4", "display": "Hemoglobin A1c", "value": 7.4, "unit": "%", "date": "2026-07-15", "interpretation": "H" },
-    { "code": "98979-8", "display": "eGFR (CKD-EPI 2021)", "value": 34, "unit": "mL/min/1.73m2", "date": "2026-07-15", "interpretation": "L" },
-    { "code": "98979-8", "display": "eGFR (CKD-EPI 2021)", "value": 27, "unit": "mL/min/1.73m2", "date": "2026-09-27", "interpretation": "L" },
-    { "code": "2823-3", "display": "Potassium", "value": 4.8, "unit": "mmol/L", "date": "2026-09-27", "interpretation": "N" },
-    { "code": "2951-2", "display": "Sodium", "value": 139, "unit": "mmol/L", "date": "2026-09-27", "interpretation": "N" }
+    { "code": "4548-4", "display": "Hemoglobin A1c", "value": 6.9, "unit": "%", "date": "2026-07-01", "interpretation": "H" }
   ],
   "vitals": [
-    { "code": "8480-6", "display": "Systolic blood pressure", "value": 134, "unit": "mmHg", "dateTime": "2026-09-27T09:45:00" }
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 124, "unit": "mmHg", "dateTime": "2026-07-01T10:30:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 78, "unit": "mmHg", "dateTime": "2026-07-01T10:30:00" }
   ],
-  "immunizations": [
-    { "vaccine": "influenza", "date": "2026-09-05" }
-  ],
-  "screenings": [
-    { "type": "mammogram", "date": "2023-05-02", "result": "BI-RADS 1" },
-    { "type": "colonoscopy", "date": "2018-03-01", "result": "one benign polyp removed" }
-  ],
-  "appointments": [
-    { "date": "2026-10-03", "department": "Nephrology", "reason": "CKD stage 4 consult" }
-  ],
+  "screenings": [],
+  "appointments": [],
   "encounters": [
-    { "type": "outpatient", "date": "2026-09-27", "reason": "Diabetes and kidney follow-up" }
+    { "type": "concierge visit", "date": "2026-07-01", "reason": "Diabetes check-in" }
   ]
 }
