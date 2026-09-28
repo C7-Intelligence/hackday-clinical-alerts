@@ -35,7 +35,14 @@ that got it running on Jason's Windows 11 laptop. **Do this before the day. The 
    "unhealthy" even when it works. On Jason's machine that was a false alarm, because the portal loaded
    and served requests fine.
 
-6. **Install Claude Code inside Ubuntu** (so it sees the repo's `.claude/` commands) and sign in.
+6. **Install Claude Code inside Ubuntu** (so it sees the repo's `.claude/` commands):
+   ```
+   curl -fsSL https://claude.ai/install.sh | bash
+   echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+   cd ~/my-agent && claude
+   ```
+   The second line matters: without it you get `claude: command not found`. Sign in when prompted, then
+   type `/duplo`, and `/duplo-extension` should appear. Always start `claude` from inside the repo folder.
 
 7. **For the Neo4j seed loader:** Ubuntu's Python has no `venv` or `pip` by default, so run
    `sudo apt install -y python3-venv python3-pip`. Then `python3 -m venv .venv && .venv/bin/pip install neo4j`.
