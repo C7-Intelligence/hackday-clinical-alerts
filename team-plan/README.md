@@ -23,8 +23,8 @@ The goal is **not** to wire in the most sponsors. It's to:
 
 Every scope decision below serves those two goals. If a feature doesn't help the pitch, cut it.
 
-> **J-Harmony: "A Proactive Medical Care Club."** The demo builds to *proactive*. See §6.
-> **TODO (Jason):** add J-Harmony's services to the §6 talk track.
+> **J-Harmony: "A Proactive Medical Care Club."** The **Big 5**: Concierge Care, HRT/TRT, Aesthetics,
+> Longevity, and Proactive Medical Care. The demo builds to *proactive*. See §6.
 
 ---
 
@@ -164,8 +164,8 @@ for **3 minutes** and keep the 5-minute version ready. Jason speaks and Stephen 
 
 **0:00 — J-Harmony (30s)**
 > "I'm Jason, this is Stephen. We're building **J-Harmony — a Proactive Medical Care Club.**
-> *[TODO Jason: services in one or two sentences, e.g. what a member gets.]*
-> Today healthcare waits for you to get sick. We don't."
+> Members get our **Big 5**: Concierge Care, HRT/TRT, Aesthetics, Longevity, and Proactive Medical Care.
+> Today, healthcare waits for you to get sick. We don't. Let us show you the engine behind that fifth one."
 
 **0:30 — Live product (90s)**, with Stephen driving:
 1. "Meet Grace, a synthetic member." Create the triage for **SYN-007** and narrate the live status.
@@ -179,9 +179,10 @@ for **3 minutes** and keep the 5-minute version ready. Jason speaks and Stephen 
 
 **2:00 — Proactive (40s)**
 > "Here's where it goes. This agent runs behind J-Harmony's **patient portal**. Every night it
-> reviews every member. Care gaps become friendly nudges in the portal. Real risks go straight to their
-> care team. FYIs keep members informed. Members stop falling through the cracks, because we
-> reach them first. That's what *proactive* means."
+> reviews every member across all of the Big 5, from their concierge visits to their HRT labs to their longevity
+> plan. Care gaps become friendly nudges in the portal. Real risks go straight to their concierge care
+> team. FYIs keep members informed. Members stop falling through the cracks, because we reach them
+> first. That's what *proactive* means."
 
 **2:40 — The reveal (20s)**
 > "And proactive care changes lives. We know, because one of us lived it."
