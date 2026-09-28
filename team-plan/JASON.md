@@ -1,4 +1,4 @@
-# Paste this into Claude Code (Jason, demo laptop)
+# Paste this into Claude Code (Jason)
 
 ---
 
@@ -8,7 +8,8 @@ that attracts investors to J-Harmony and impresses AI companies that are hiring,
 reliable end-to-end path over extra features.
 
 The DevKit is cloned at `~/my-agent` in WSL2 Ubuntu, and the platform runs there on Docker Desktop.
-Our plan repo is `https://github.com/C7-Intelligence/hackday-clinical-alerts`. Right now it holds
+**The demo runs on Stephen's Windows machine**, and my laptop is the development box and the backup
+(see `team-plan/README.md` §4). Our plan repo is `https://github.com/C7-Intelligence/hackday-clinical-alerts`. Right now it holds
 only `team-plan/` and `data/`.
 
 **Step 0: bootstrap (do this first, then stop and report):**
@@ -62,6 +63,9 @@ Then do this in order:
    remove or re-tier alerts) → post results → `Complete`.
 7. Verify all 7 patients end to end against `data/expected-alerts.json`. Then run the cohort query and
    confirm it returns SYN-001 and SYN-007.
+8. After merging to `main`, write `team-plan/DEPLOY.md`: the exact commands to deploy `main` on a fresh
+   machine (pull, `sync-engine.sh`, build, deploy, and the portal steps for `neo4j-mcp-scope`). Stephen uses it on
+   the demo machine. Keep my laptop deployed with the same build as the backup.
 
 Working style: keep commits small and push often. Before anything that restarts containers, rewrites
 `.env`, or switches the LLM, ask me first. When something fails, check `docs/troubleshooting.md` and the

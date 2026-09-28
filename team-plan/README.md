@@ -23,7 +23,7 @@ The goal is **not** to wire in the most sponsors. It's to:
 
 Every scope decision below serves those two goals. If a feature doesn't help the pitch, cut it.
 
-> **TODO (Jason, before the day):** add J-Harmony's one-line pitch and the investor "ask" to §5 so the
+> **TODO (Jason, before the day):** add J-Harmony's one-line pitch and the investor "ask" to §6 so the
 > demo closes on it.
 
 ---
@@ -97,14 +97,33 @@ its core path.
 
 ---
 
-## 4. Timeline
+## 4. Demo machine
+
+**The demo runs on Stephen's Windows machine** (the most powerful one), under WSL2 Ubuntu + Docker Desktop.
+Setup: [`WINDOWS-SETUP.md`](WINDOWS-SETUP.md).
+
+- Both of us develop against our **own** local platform. Jason builds and tests the extension on his
+  laptop, and Stephen runs the engine and graph on his.
+- From the **3:30 checkpoint**, `main` is deployed and tested on **Stephen's machine**. That's the only
+  build that matters for judging.
+- Stephen's portal needs its own Neo4j MCP server, provider, credentials and scope (the same steps Jason
+  did on his). Stephen types the Aura credentials into his own portal.
+- **Jason's laptop is the backup.** Keep it running with the same `main` build deployed, so if Stephen's
+  machine fails during judging we switch laptops in under a minute.
+- Before the demo: plug in power, turn off Windows Update restarts and notifications (Focus / Do Not
+  Disturb), close heavy apps, and have Docker Desktop already running.
+
+---
+
+## 5. Timeline
 
 ### Before the day (by 9/28 evening)
-- [ ] **Stephen:** install the DevKit on his laptop (`hackday/Installing DevKit.md`). Use a work email.
+- [ ] **Stephen:** set up the demo machine per [`WINDOWS-SETUP.md`](WINDOWS-SETUP.md) (WSL2, Docker Desktop,
+      DevKit, Claude Code). Use a work email. Confirm http://localhost:4210 signs in.
 - [ ] **Stephen:** create an **AuraDB Free** instance at console.neo4j.io and **download the credentials
       file immediately** (the password is shown once). Share it with Jason privately, not in git.
-- [ ] **Jason:** confirm the stack on the demo laptop still starts (open Docker Desktop, then `./run.sh`).
-- [ ] **Jason:** fill in the J-Harmony pitch TODO in §0 / §5.
+- [ ] **Jason:** confirm the stack on his (backup) laptop still starts (open Docker Desktop, then `./run.sh`).
+- [ ] **Jason:** fill in the J-Harmony pitch TODO in §0 / §6.
 - [ ] **Both:** join the Hack Day Slack and watch the 15-minute walkthrough (vimeo.com/1228174847).
 
 ### On the day (6 hours)
@@ -114,16 +133,16 @@ its core path.
 | 0:00–0:20 | Bootstrap the repo (JASON.md step 0), check the stack is up, create `jason/extension` | Clone the bootstrapped repo, create `stephen/engine`, `./run.sh` | 5 min: re-read CONTRACT.md together |
 | 0:20–2:30 | `/duplo-extension` → scaffold the `AlertTriage` resource, UI, and a **stub** skill that posts the sample result from CONTRACT §3. Register the Neo4j MCP server + scope in the portal (`hackday/Sponsor Integrations.md`, ~15 min). | Build `engine/triage.py` + all rules until `engine/tests` pass. Build `engine/graph/` (model, seed loader, cohort queries) and seed Aura with all 7 patients + interaction knowledge. | **2:30:** the stub renders in the portal, the tests are green, and a HelpDesk ticket with `neo4j-mcp-scope` answers the cohort question |
 | 2:30–3:30 | Replace the stub with the real skill: engine → graph write → explain → results | Pair on integration. Hand Jason the "explain" instructions and the Cypher for the skill's graph step. | **3:30:** real alerts for all 7 patients render, and each triage shows up in the graph |
-| 3:30–4:45 | UI polish: tier grouping, count chips, evidence table, empty states, a "Population" link or panel showing the cohort query | Hardening + a Neo4j Browser/Bloom view of the graph for the demo (saved queries and styling) | Merge to `main` and deploy on the **demo laptop only** |
+| 3:30–4:45 | UI polish: tier grouping, count chips, evidence table, empty states, a "Population" link or panel showing the cohort query | Hardening + a Neo4j Browser/Bloom view of the graph for the demo (saved queries and styling) | Merge to `main`, then deploy on **Stephen's machine (demo)** and Jason's (backup). Stephen wires `neo4j-mcp-scope` in his portal. |
 | 4:45–5:30 | Optional: the Crusoe/Nebius portability experiment (§2). Never demo on it. | Optional: acknowledge/snooze a Nudge | |
-| 5:30–6:00 | **Demo rehearsal ×2** on the demo laptop (§5). Freeze code. | Same | |
+| 5:30–6:00 | **Demo rehearsal ×2 on Stephen's machine** (§6). Freeze code. Jason presents. | Drives the machine during the demo. | |
 
 If a checkpoint slips by 30+ minutes, cut in this order: optional items → UI polish → graph visual styling.
 **Never cut the end-to-end path.**
 
 ---
 
-## 5. Demo script (≈4 minutes, written for investors and hiring managers)
+## 6. Demo script (≈4 minutes, written for investors and hiring managers)
 
 1. **Problem (20s):** "Clinicians see hundreds of alerts a day and ignore most of them. Alert fatigue
    kills. We triage alerts into *act now*, *nudge*, and *FYI*, and we explain every one."
@@ -142,7 +161,7 @@ If a checkpoint slips by 30+ minutes, cut in this order: optional items → UI p
 
 ---
 
-## 6. Definition of done
+## 7. Definition of done
 
 - [ ] "Clinical ▸ Alert Triage" appears in the portal left nav (hot-loaded, no restart).
 - [ ] Creating a triage for any of `SYN-001`…`SYN-007` goes Processing → Complete, with live sub-status updates.
@@ -155,9 +174,9 @@ If a checkpoint slips by 30+ minutes, cut in this order: optional items → UI p
 
 ---
 
-## 7. Guardrails
+## 8. Guardrails
 
 - **Synthetic data only.** No real PHI, ever, including in prompts, screenshots, Slack and Neo4j.
 - Rule thresholds are **illustrative for a demo**, not clinical guidance. Say so on screen.
 - Never commit `.env` or the Neo4j credentials file. `.env` is already gitignored.
-- The demo runs on **Jason's laptop**. Test the final build there, not only on Stephen's.
+- The demo runs on **Stephen's machine**. Test the final build there, not only on Jason's laptop.
