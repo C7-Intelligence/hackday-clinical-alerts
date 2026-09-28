@@ -23,8 +23,8 @@ The goal is **not** to wire in the most sponsors. It's to:
 
 Every scope decision below serves those two goals. If a feature doesn't help the pitch, cut it.
 
-> **TODO (Jason, before the day):** add J-Harmony's one-line pitch and the investor "ask" to §6 so the
-> demo closes on it.
+> **J-Harmony: "A Proactive Medical Care Club."** The demo builds to *proactive*. See §6.
+> **TODO (Jason):** add J-Harmony's services to the §6 talk track.
 
 ---
 
@@ -123,7 +123,7 @@ Setup: [`WINDOWS-SETUP.md`](WINDOWS-SETUP.md).
 - [ ] **Stephen:** create an **AuraDB Free** instance at console.neo4j.io and **download the credentials
       file immediately** (the password is shown once). Share it with Jason privately, not in git.
 - [ ] **Jason:** confirm the stack on his (backup) laptop still starts (open Docker Desktop, then `./run.sh`).
-- [ ] **Jason:** fill in the J-Harmony pitch TODO in §0 / §6.
+- [ ] **Jason:** fill in J-Harmony's services in the §6 talk track, and prep the §6 assets (Stephen's photo stays off git).
 - [ ] **Both:** join the Hack Day Slack and watch the 15-minute walkthrough (vimeo.com/1228174847).
 
 ### On the day (6 hours)
@@ -142,22 +142,71 @@ If a checkpoint slips by 30+ minutes, cut in this order: optional items → UI p
 
 ---
 
-## 6. Demo script (≈4 minutes, written for investors and hiring managers)
+## 6. Demo script: **J-Harmony, "A Proactive Medical Care Club"**
 
-1. **Problem (20s):** "Clinicians see hundreds of alerts a day and ignore most of them. Alert fatigue
-   kills. We triage alerts into *act now*, *nudge*, and *FYI*, and we explain every one."
-2. **SYN-007 Grace Thompson (hero):** create the triage and narrate the live sub-status. All three tiers
-   fire: Clinical (metformin with eGFR 27), Nudge (mammogram overdue), and Informational. Open the
-   Clinical card to show the evidence (the eGFR lab) and the LLM's plain-language rationale.
-3. **SYN-003 Daniel Reyes:** a sepsis screen fires from vitals + lactate, and the Spanish interpreter flag shows.
-4. **SYN-006 Sofia Alvarez (control):** only Informational alerts. "It doesn't cry wolf."
-5. **The graph (45s):** switch to Neo4j and ask *"Which patients on an ACE inhibitor or ARB have a
-   clinical alert?"* Show the graph: patients → meds → drug class → interaction → alert. "This is how you
-   go from one patient to managing a whole population."
-6. **Why it's trustworthy (30s):** rules decide, the graph connects, the LLM explains. Show the
-   `engine/tests` passing. The LLM is swappable (mention the open-model run if we did it).
-7. **Close:** *[J-Harmony pitch + ask. TODO Jason.]* The agent was hot-loaded into a running DuploCloud
-   platform with no restart.
+**Demo length isn't published.** Ask in the Hack Day Slack / hackday@duplocloud.net before the day. Plan
+for **3 minutes** and keep the 5-minute version ready. Jason speaks and Stephen drives the demo machine.
+
+> The event's top prize is a pitch to VCs on The AI Conference main stage the next day, so this is an
+> investor pitch with a live product in the middle. DuploCloud's judges score the **working product**, not
+> the slides, so the live part is never the thing we cut.
+
+### 3-minute run-of-show
+
+| Time | Who | Beat |
+| --- | --- | --- |
+| 0:00–0:30 | Jason | **J-Harmony + services** |
+| 0:30–2:00 | Jason talks, Stephen drives | **Live product**: SYN-007, then the Neo4j graph |
+| 2:00–2:40 | Jason | **Proactive**: how this agent powers J-Harmony's patient portal |
+| 2:40–3:00 | Both | **The reveal**: Stephen's photo, then he stands |
+
+### Talk track (draft; make it your own)
+
+**0:00 — J-Harmony (30s)**
+> "I'm Jason, this is Stephen. We're building **J-Harmony — a Proactive Medical Care Club.**
+> *[TODO Jason: services in one or two sentences, e.g. what a member gets.]*
+> Today healthcare waits for you to get sick. We don't."
+
+**0:30 — Live product (90s)**, with Stephen driving:
+1. "Meet Grace, a synthetic member." Create the triage for **SYN-007** and narrate the live status.
+2. All three tiers land: 🔴 **Clinical** ("she's still on metformin and her kidney function just dropped
+   to 27, which is dangerous"), 🟠 **Nudge** ("her mammogram is overdue"), 🔵 **Informational** ("nephrology
+   visit Friday").
+3. Open the Clinical card: "Every alert shows its evidence. The rules decide, and the AI explains in
+   plain language. It never invents an alert."
+4. Switch to Neo4j: "Now across the whole club: which members on blood-pressure drugs have a
+   clinical alert?" The graph lights up SYN-001 and SYN-007. "One patient becomes population health."
+
+**2:00 — Proactive (40s)**
+> "Here's where it goes. This agent runs behind J-Harmony's **patient portal**. Every night it
+> reviews every member. Care gaps become friendly nudges in the portal. Real risks go straight to their
+> care team. FYIs keep members informed. Members stop falling through the cracks, because we
+> reach them first. That's what *proactive* means."
+
+**2:40 — The reveal (20s)**
+> "And proactive care changes lives. We know, because one of us lived it."
+>
+> *Flip to Stephen's photo: same black shirt, 70 lb lighter.* "Stephen, stand up."
+>
+> *(Applause, hopefully.)* "That's J-Harmony. Thank you."
+
+Keep the reveal to **20 seconds or less**. Let the applause happen, but don't wait on it. Use the last
+line as the cue that you're done.
+
+### 5-minute version (if we get it)
+
+Add after SYN-007: **SYN-003 Daniel Reyes** (a sepsis screen fires from vitals + lactate, and the Spanish
+interpreter flag shows) and **SYN-006 Sofia Alvarez** (FYIs only: "it doesn't cry wolf"). Before "Proactive",
+add 20s of **why it's trustworthy**: deterministic rules + tests, a knowledge graph, and a swappable LLM,
+all hot-loaded into a running DuploCloud platform with no restart.
+
+### Assets to prepare before the day
+
+- [ ] **Stephen's photo** (same black shirt, 70 lb lighter), stored on the demo machine locally and **not in
+      this repo**. Have it open in a background window or as a slide so the flip is one keystroke.
+- [ ] J-Harmony title slide/logo (optional, for 0:00) and a closing slide with the one-liner + contact.
+- [ ] Browser tabs pre-opened on the demo machine: portal (Alert Triage list), Neo4j Browser with the cohort query saved.
+- [ ] Rehearse to a timer twice. If you run over at 2:00, skip the Neo4j step, never the reveal.
 
 ---
 
