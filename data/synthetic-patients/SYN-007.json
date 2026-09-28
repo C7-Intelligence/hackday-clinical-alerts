@@ -5,7 +5,7 @@
   "name": "James Whitaker",
   "birthDate": "1971-09-03",
   "sex": "male",
-  "services": ["Concierge Care", "Proactive Medical Care"],
+  "membership": { "plan": "All-Inclusive", "since": "2024-02-01" },
   "conditions": [
     { "code": "E11.9", "display": "Type 2 diabetes mellitus without complications", "onset": "2020-01-14", "status": "active", "tags": ["diabetes"] }
   ],

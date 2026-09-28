@@ -5,7 +5,7 @@
   "name": "David Park",
   "birthDate": "1975-03-02",
   "sex": "male",
-  "services": ["Concierge Care", "HRT/TRT", "Proactive Medical Care"],
+  "membership": { "plan": "All-Inclusive", "since": "2024-05-01" },
   "conditions": [
     { "code": "E29.1", "display": "Testicular hypofunction (hypogonadism)", "onset": "2024-05-20", "status": "active", "tags": ["hypogonadism"] },
     { "code": "E66.811", "display": "Obesity, class 1", "onset": "2023-01-10", "status": "active", "tags": ["obesity"] }

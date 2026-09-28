@@ -38,13 +38,13 @@ Do this in order:
 4. **Neo4j graph** (CONTRACT §6). I have the AuraDB Free credentials file locally. Load it from an
    env var or a gitignored file, and **never commit it or print the password**.
    - `engine/graph/seed.py` (a `pip install neo4j` venv is fine; it runs on my laptop, not in the agent):
-     idempotently load all 7 members, their services, conditions, meds → therapy classes, and
+     idempotently load all 7 members (all on the All-Inclusive plan), conditions, meds → therapy classes, and
      `data/therapy-risks.json`.
      Add a `--reset` flag to wipe and reload the demo data.
    - `engine/graph/queries.cypher`: the parameterised **write** statement the skill runs per triage
      (MERGE patient, replace that patient's alerts, link alerts to risks), the two **cohort queries** in CONTRACT §6 (results must match
      `cohorts` in `data/expected-alerts.json`), and 2–3 more investor-friendly queries (e.g. "open alerts per
-     Big 5 service", "members trending toward a clinical alert").
+     therapy program (TRT / GLP-1 / other)", "members trending toward a clinical alert").
    - A Neo4j Browser/Bloom setup for the demo: saved queries and node colours by tier, documented in
      `engine/graph/README.md`.
 5. **2:30 checkpoint:** tests green, graph seeded, everything pushed. Tell Jason, and paste him the output

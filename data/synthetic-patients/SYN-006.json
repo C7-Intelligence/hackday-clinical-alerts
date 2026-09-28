@@ -5,7 +5,7 @@
   "name": "Elena Brooks",
   "birthDate": "1982-02-11",
   "sex": "female",
-  "services": ["Longevity"],
+  "membership": { "plan": "All-Inclusive", "since": "2025-06-01" },
   "conditions": [],
   "medications": [],
   "labs": [

@@ -49,8 +49,9 @@ Then do this in order:
 5. **UI requirements:**
    - List view: patient name + ID, and three coloured count chips (clinical / nudge / informational).
    - Create form: `patientId` is a dropdown of the 7 members in `data/synthetic-patients/index.json`,
-     shown as "SYN-00X — Name, age sex · services". Bake the list into the frontend at build time.
-   - Show the member's J-Harmony services as chips on the detail page.
+     shown as "SYN-00X — Name, age sex". Bake the list into the frontend at build time.
+   - On the detail page header, show "All-Inclusive member since <memberSince>". There's no per-service
+     enrollment: every member gets all Big 5 services.
    - Detail page: summary banner, then Clinical / Nudge / Informational sections of alert cards (title,
      detail, rationale, recommended action, collapsible evidence table). Use the CONTRACT colours, and show
      an empty state per tier.

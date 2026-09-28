@@ -5,7 +5,7 @@
   "name": "Marcus Lee",
   "birthDate": "1980-05-12",
   "sex": "male",
-  "services": ["HRT/TRT", "Proactive Medical Care"],
+  "membership": { "plan": "All-Inclusive", "since": "2024-10-01" },
   "conditions": [
     { "code": "E29.1", "display": "Testicular hypofunction (hypogonadism)", "onset": "2024-10-15", "status": "active", "tags": ["hypogonadism"] }
   ],

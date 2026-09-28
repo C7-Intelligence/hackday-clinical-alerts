@@ -5,7 +5,7 @@
   "name": "Robert Hayes",
   "birthDate": "1963-01-15",
   "sex": "male",
-  "services": ["HRT/TRT", "Concierge Care"],
+  "membership": { "plan": "All-Inclusive", "since": "2023-01-20" },
   "conditions": [
     { "code": "E29.1", "display": "Testicular hypofunction (hypogonadism)", "onset": "2023-02-01", "status": "active", "tags": ["hypogonadism"] },
     { "code": "I10", "display": "Essential hypertension", "onset": "2019-06-12", "status": "active", "tags": ["hypertension"] }

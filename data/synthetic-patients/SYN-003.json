@@ -5,7 +5,7 @@
   "name": "Priya Raman",
   "birthDate": "1968-06-02",
   "sex": "female",
-  "services": ["Concierge Care", "Proactive Medical Care"],
+  "membership": { "plan": "All-Inclusive", "since": "2025-01-15" },
   "conditions": [
     { "code": "E11.9", "display": "Type 2 diabetes mellitus without complications", "onset": "2017-09-05", "status": "active", "tags": ["diabetes"] },
     { "code": "E66.812", "display": "Obesity, class 2", "onset": "2015-03-22", "status": "active", "tags": ["obesity"] }

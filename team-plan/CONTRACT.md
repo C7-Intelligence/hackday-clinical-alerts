@@ -42,7 +42,7 @@ Convenience: `python3 triage.py --patient-id SYN-003 --data-dir <dir>` resolves 
   "patientName": "David Park",
   "age": 51,
   "sex": "male",
-  "services": ["Concierge Care", "HRT/TRT", "Proactive Medical Care"],
+  "memberSince": "2024-05-01",
   "asOf": "2026-09-29",
   "engineVersion": "0.1.0",
   "synthetic": true,
@@ -104,8 +104,7 @@ and **carry on**. Graph failure never fails a triage.
 ## 6. Neo4j graph model (Stephen designs, the skill writes via MCP)
 
 ```
-(:Member {id, name, age, sex, synthetic:true})
-  -[:ENROLLED_IN]->(:Service {name})                  // J-Harmony Big 5
+(:Member {id, name, age, sex, memberSince, synthetic:true})   // every member is All-Inclusive
   -[:HAS_CONDITION]->(:Condition {code, display})
   -[:TAKES]->(:Medication {name})-[:IN_CLASS]->(:TherapyClass {name})
   -[:HAS_ALERT {asOf}]->(:Alert {id, ruleId, tier, title})

@@ -24,7 +24,7 @@ The goal is **not** to wire in the most sponsors. It's to:
 Every scope decision below serves those two goals. If a feature doesn't help the pitch, cut it.
 
 > **J-Harmony: "A Proactive Medical Care Club."** The **Big 5**: Concierge Care, HRT/TRT, Aesthetics,
-> Longevity, and Proactive Medical Care.
+> Longevity, and Proactive Medical Care, **all included in one monthly membership** (no à la carte).
 >
 > **Cyber7Group** runs the intelligence and infrastructure, and **J-Harmony** runs the medicine. Together
 > it's a proactive medical care company that operates **exactly like an MSP, but now with AI**: monitor
@@ -50,7 +50,7 @@ runs our triage skill, which:
      new normal results.
 
    The data is built around J-Harmony's real lab stories, **TRT** and **GLP-1** (see `data/README.md`).
-3. Writes the member, their Big 5 services, therapies and alerts into a **Neo4j knowledge graph**. The
+3. Writes the member, their therapies and alerts into a **Neo4j knowledge graph**. The
    graph connects therapy → known risk → alert, so it can answer **population** questions:
    *"Which TRT members have a hematocrit problem?"*
 4. Has the LLM write a **plain-language rationale** per alert and a one-paragraph patient summary.
@@ -133,7 +133,7 @@ Setup: [`WINDOWS-SETUP.md`](WINDOWS-SETUP.md).
 - [ ] **Stephen:** create an **AuraDB Free** instance at console.neo4j.io and **download the credentials
       file immediately** (the password is shown once). Share it with Jason privately, not in git.
 - [ ] **Jason:** confirm the stack on his (backup) laptop still starts (open Docker Desktop, then `./run.sh`).
-- [ ] **Jason:** fill in J-Harmony's services in the §6 talk track, and prep the §6 assets (Stephen's photo stays off git).
+- [ ] **Jason:** rehearse the §6 talk track and prep the §6 assets (Stephen's photo stays off git).
 - [ ] **Both:** join the Hack Day Slack and watch the 15-minute walkthrough (vimeo.com/1228174847).
 
 ### On the day (6 hours)
@@ -174,8 +174,8 @@ for **3 minutes** and keep the 5-minute version ready. Jason speaks and Stephen 
 
 **0:00 — J-Harmony × Cyber7Group (30s)**
 > "I'm Jason, this is Stephen. We're **J-Harmony — a Proactive Medical Care Club** — and **Cyber7Group**.
-> J-Harmony delivers the **Big 5**: Concierge Care, HRT/TRT, Aesthetics, Longevity, and Proactive Medical
-> Care. Cyber7Group runs the intelligence and infrastructure underneath. Put together, we run medicine
+> One monthly membership gets you all of J-Harmony's **Big 5**: Concierge Care, HRT/TRT, Aesthetics,
+> Longevity, and Proactive Medical Care. Cyber7Group runs the intelligence and infrastructure underneath. Put together, we run medicine
 > **exactly like an MSP runs IT, but now with AI.** We monitor every member, we catch problems before
 > they become outages, and we escalate by severity. Let us show you."
 

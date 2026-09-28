@@ -5,7 +5,7 @@
   "name": "Sofia Alvarez",
   "birthDate": "1988-07-22",
   "sex": "female",
-  "services": ["Aesthetics", "Proactive Medical Care"],
+  "membership": { "plan": "All-Inclusive", "since": "2025-11-01" },
   "conditions": [
     { "code": "E66.811", "display": "Obesity, class 1", "onset": "2025-11-01", "status": "active", "tags": ["obesity"] }
   ],

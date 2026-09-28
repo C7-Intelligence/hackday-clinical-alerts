@@ -5,8 +5,9 @@
 
 All dates are anchored to **as-of = 2026-09-29** (Hack Day). The engine evaluates every rule relative to it.
 
-The data reflects what J-Harmony actually sees in its **Big 5** (Concierge Care, HRT/TRT, Aesthetics,
-Longevity, Proactive Medical Care), especially the two most common lab stories:
+Every member is on J-Harmony's **All-Inclusive** membership: all of the **Big 5** (Concierge Care, HRT/TRT,
+Aesthetics, Longevity, Proactive Medical Care) for one monthly price, with no à la carte. The data reflects
+what J-Harmony actually sees across its membership, especially the two most common lab stories:
 
 - **TRT**: hematocrit creeping up (erythrocytosis), blood pressure rising, PSA monitoring falling behind.
 - **GLP-1 (semaglutide / tirzepatide)**: nausea and poor intake → dehydration → **BUN and creatinine going up**,
@@ -14,15 +15,15 @@ Longevity, Proactive Medical Care), especially the two most common lab stories:
 
 ## Members
 
-| ID | Name | Age/Sex | Big 5 services | 🔴 Clinical | 🟠 Nudge | 🔵 Informational |
+| ID | Name | Age/Sex | Currently using | 🔴 Clinical | 🟠 Nudge | 🔵 Informational |
 | --- | --- | --- | --- | --- | --- | --- |
-| **SYN-001** | **David Park** | 51 M | Concierge, HRT/TRT, Proactive | **Hematocrit 54.8% on TRT** | **BP elevated on TRT**, **BUN/creatinine up on tirzepatide** | **Down 14% body weight**, upcoming appt, new result |
-| SYN-002 | Marcus Lee | 46 M | HRT/TRT, Proactive | — | **Hematocrit trending up** (47.1 → 49.8 → 52.6), PSA overdue | Upcoming appt, new result |
-| SYN-003 | Priya Raman | 58 F | Concierge, Proactive | **Creatinine 0.9 → 1.6 on semaglutide (AKI)** | A1c overdue | New result |
-| SYN-004 | Sofia Alvarez | 38 F | Aesthetics, Proactive | — | **BUN/creatinine up on semaglutide** | Down 13.6% body weight, upcoming appt |
-| SYN-005 | Robert Hayes | 63 M | HRT/TRT, Concierge | **BP 184/112 on TRT** | — | New result |
-| SYN-006 | Elena Brooks | 44 F | Longevity | — | — | Upcoming appt, new result |
-| SYN-007 | James Whitaker | 55 M | Concierge, Proactive | — | Colorectal screening | — |
+| **SYN-001** | **David Park** | 51 M | TRT + tirzepatide | **Hematocrit 54.8% on TRT** | **BP elevated on TRT**, **BUN/creatinine up on tirzepatide** | **Down 14% body weight**, upcoming appt, new result |
+| SYN-002 | Marcus Lee | 46 M | TRT | — | **Hematocrit trending up** (47.1 → 49.8 → 52.6), PSA overdue | Upcoming appt, new result |
+| SYN-003 | Priya Raman | 58 F | Semaglutide, diabetes care | **Creatinine 0.9 → 1.6 on semaglutide (AKI)** | A1c overdue | New result |
+| SYN-004 | Sofia Alvarez | 38 F | Semaglutide, aesthetics | — | **BUN/creatinine up on semaglutide** | Down 13.6% body weight, upcoming appt |
+| SYN-005 | Robert Hayes | 63 M | TRT, blood-pressure care | **BP 184/112 on TRT** | — | New result |
+| SYN-006 | Elena Brooks | 44 F | Longevity panel | — | — | Upcoming appt, new result |
+| SYN-007 | James Whitaker | 55 M | Diabetes care | — | Colorectal screening | — |
 
 - **SYN-001 David Park is the short-demo hero.** He's on TRT **and** tirzepatide, so one member shows all
   three tiers *and* both J-Harmony lab stories in 90 seconds.
@@ -40,13 +41,13 @@ A simplified, FHIR-inspired shape. Labs and vitals carry LOINC codes. Conditions
 | Key | Contents |
 | --- | --- |
 | `id`, `mrn`, `name`, `birthDate`, `sex`, `synthetic` | Demographics |
-| `services[]` | Enrolled J-Harmony Big 5 services |
+| `membership` | `plan` (always `All-Inclusive`: every member gets all Big 5 services) and `since` |
 | `conditions[]` | `code` (ICD-10), `display`, `onset`, `status` (`active`/`resolved`), `tags[]` (e.g. `diabetes`) |
 | `medications[]` | `name`, `dose`, `route`, `frequency`, `class`, `start`, `status` (`active`/`stopped`) |
 | `labs[]` | `code` (LOINC), `display`, `value`, `unit`, `date`, `interpretation` (`N`/`H`/`L`/`HH`/`LL`) |
 | `vitals[]` | `code` (LOINC), `display`, `value`, `unit`, `dateTime` |
 | `screenings[]` | `type` (`colonoscopy`/`fit`), `date`, `result` |
-| `appointments[]` | `date`, `service`, `reason` |
+| `appointments[]` | `date`, `service` (which Big 5 service the visit is for), `reason` |
 | `encounters[]` | `type`, `date`, `reason` |
 
 Medication `class` values the rules key on: `androgen` (testosterone) and `GLP-1 receptor agonist`

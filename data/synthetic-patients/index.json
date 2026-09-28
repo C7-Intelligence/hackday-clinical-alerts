@@ -1,13 +1,14 @@
 {
   "synthetic": true,
   "asOf": "2026-09-29",
+  "membership": "Every member is on the All-Inclusive plan: all Big 5 services for one monthly price (no a la carte).",
   "patients": [
-    { "id": "SYN-001", "name": "David Park", "age": 51, "sex": "male", "file": "SYN-001.json", "services": ["Concierge Care", "HRT/TRT", "Proactive Medical Care"] },
-    { "id": "SYN-002", "name": "Marcus Lee", "age": 46, "sex": "male", "file": "SYN-002.json", "services": ["HRT/TRT", "Proactive Medical Care"] },
-    { "id": "SYN-003", "name": "Priya Raman", "age": 58, "sex": "female", "file": "SYN-003.json", "services": ["Concierge Care", "Proactive Medical Care"] },
-    { "id": "SYN-004", "name": "Sofia Alvarez", "age": 38, "sex": "female", "file": "SYN-004.json", "services": ["Aesthetics", "Proactive Medical Care"] },
-    { "id": "SYN-005", "name": "Robert Hayes", "age": 63, "sex": "male", "file": "SYN-005.json", "services": ["HRT/TRT", "Concierge Care"] },
-    { "id": "SYN-006", "name": "Elena Brooks", "age": 44, "sex": "female", "file": "SYN-006.json", "services": ["Longevity"] },
-    { "id": "SYN-007", "name": "James Whitaker", "age": 55, "sex": "male", "file": "SYN-007.json", "services": ["Concierge Care", "Proactive Medical Care"] }
+    { "id": "SYN-001", "name": "David Park", "age": 51, "sex": "male", "file": "SYN-001.json", "memberSince": "2024-05-01" },
+    { "id": "SYN-002", "name": "Marcus Lee", "age": 46, "sex": "male", "file": "SYN-002.json", "memberSince": "2024-10-01" },
+    { "id": "SYN-003", "name": "Priya Raman", "age": 58, "sex": "female", "file": "SYN-003.json", "memberSince": "2025-01-15" },
+    { "id": "SYN-004", "name": "Sofia Alvarez", "age": 38, "sex": "female", "file": "SYN-004.json", "memberSince": "2025-11-01" },
+    { "id": "SYN-005", "name": "Robert Hayes", "age": 63, "sex": "male", "file": "SYN-005.json", "memberSince": "2023-01-20" },
+    { "id": "SYN-006", "name": "Elena Brooks", "age": 44, "sex": "female", "file": "SYN-006.json", "memberSince": "2025-06-01" },
+    { "id": "SYN-007", "name": "James Whitaker", "age": 55, "sex": "male", "file": "SYN-007.json", "memberSince": "2024-02-01" }
   ]
 }
