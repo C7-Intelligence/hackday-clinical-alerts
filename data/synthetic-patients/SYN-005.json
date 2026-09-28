@@ -1,0 +1,28 @@
+{
+  "id": "SYN-005",
+  "mrn": "SYN-MRN-100005",
+  "synthetic": true,
+  "name": "Marcus Lee",
+  "birthDate": "1974-04-08",
+  "sex": "male",
+  "preferredLanguage": "en",
+  "advanceDirectiveOnFile": false,
+  "conditions": [],
+  "medications": [],
+  "labs": [
+    { "code": "13457-7", "display": "LDL cholesterol (calculated)", "value": 110, "unit": "mg/dL", "date": "2026-09-27", "interpretation": "N" },
+    { "code": "2093-3", "display": "Total cholesterol", "value": 188, "unit": "mg/dL", "date": "2026-09-27", "interpretation": "N" }
+  ],
+  "vitals": [
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 126, "unit": "mmHg", "dateTime": "2026-09-27T11:15:00" }
+  ],
+  "immunizations": [
+    { "vaccine": "influenza", "date": "2024-10-22" },
+    { "vaccine": "Tdap", "date": "2019-08-30" }
+  ],
+  "screenings": [],
+  "appointments": [],
+  "encounters": [
+    { "type": "outpatient", "date": "2026-09-27", "reason": "Annual physical" }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "SYN-001",
+  "mrn": "SYN-MRN-100001",
+  "synthetic": true,
+  "name": "Walter Okafor",
+  "birthDate": "1954-03-14",
+  "sex": "male",
+  "preferredLanguage": "en",
+  "advanceDirectiveOnFile": true,
+  "conditions": [
+    { "code": "N18.32", "display": "Chronic kidney disease, stage 3b", "onset": "2021-06-01", "status": "active", "tags": ["ckd"] },
+    { "code": "I10", "display": "Essential hypertension", "onset": "2008-02-11", "status": "active", "tags": ["hypertension"] },
+    { "code": "I50.22", "display": "Chronic systolic heart failure", "onset": "2022-10-19", "status": "active", "tags": ["heart_failure"] }
+  ],
+  "medications": [
+    { "name": "Lisinopril", "dose": "20 mg", "route": "PO", "frequency": "daily", "class": "ACE inhibitor", "start": "2015-04-02", "status": "active" },
+    { "name": "Spironolactone", "dose": "25 mg", "route": "PO", "frequency": "daily", "class": "potassium-sparing diuretic", "start": "2026-08-20", "status": "active" },
+    { "name": "Furosemide", "dose": "40 mg", "route": "PO", "frequency": "daily", "class": "loop diuretic", "start": "2022-10-20", "status": "active" },
+    { "name": "Atorvastatin", "dose": "40 mg", "route": "PO", "frequency": "nightly", "class": "statin", "start": "2016-01-15", "status": "active" }
+  ],
+  "labs": [
+    { "code": "2823-3", "display": "Potassium", "value": 5.2, "unit": "mmol/L", "date": "2026-08-15", "interpretation": "H" },
+    { "code": "2823-3", "display": "Potassium", "value": 6.1, "unit": "mmol/L", "date": "2026-09-28", "interpretation": "HH" },
+    { "code": "98979-8", "display": "eGFR (CKD-EPI 2021)", "value": 38, "unit": "mL/min/1.73m2", "date": "2026-09-28", "interpretation": "L" },
+    { "code": "2160-0", "display": "Creatinine", "value": 1.8, "unit": "mg/dL", "date": "2026-09-28", "interpretation": "H" }
+  ],
+  "vitals": [
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 128, "unit": "mmHg", "dateTime": "2026-09-15T10:05:00" },
+    { "code": "8867-4", "display": "Heart rate", "value": 72, "unit": "/min", "dateTime": "2026-09-15T10:05:00" }
+  ],
+  "immunizations": [
+    { "vaccine": "influenza", "date": "2026-09-10" },
+    { "vaccine": "pneumococcal (PCV20)", "date": "2023-10-02" }
+  ],
+  "screenings": [
+    { "type": "colonoscopy", "date": "2019-05-02", "result": "normal" }
+  ],
+  "appointments": [
+    { "date": "2026-10-06", "department": "Cardiology", "reason": "Heart failure follow-up" }
+  ],
+  "encounters": [
+    { "type": "outpatient", "date": "2026-09-15", "reason": "Primary care visit" }
+  ]
+}

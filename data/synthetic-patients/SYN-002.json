@@ -1,0 +1,39 @@
+{
+  "id": "SYN-002",
+  "mrn": "SYN-MRN-100002",
+  "synthetic": true,
+  "name": "Priya Raman",
+  "birthDate": "1968-06-02",
+  "sex": "female",
+  "preferredLanguage": "en",
+  "advanceDirectiveOnFile": false,
+  "conditions": [
+    { "code": "E11.9", "display": "Type 2 diabetes mellitus without complications", "onset": "2017-09-05", "status": "active", "tags": ["diabetes"] },
+    { "code": "E66.9", "display": "Obesity, unspecified", "onset": "2015-03-22", "status": "active", "tags": ["obesity"] }
+  ],
+  "medications": [
+    { "name": "Metformin", "dose": "1000 mg", "route": "PO", "frequency": "BID", "class": "biguanide", "start": "2017-09-05", "status": "active" }
+  ],
+  "labs": [
+    { "code": "4548-4", "display": "Hemoglobin A1c", "value": 9.1, "unit": "%", "date": "2026-01-20", "interpretation": "H" },
+    { "code": "98979-8", "display": "eGFR (CKD-EPI 2021)", "value": 72, "unit": "mL/min/1.73m2", "date": "2026-01-20", "interpretation": "N" },
+    { "code": "13457-7", "display": "LDL cholesterol (calculated)", "value": 142, "unit": "mg/dL", "date": "2026-01-20", "interpretation": "H" }
+  ],
+  "vitals": [
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 132, "unit": "mmHg", "dateTime": "2026-01-20T09:30:00" }
+  ],
+  "immunizations": [
+    { "vaccine": "influenza", "date": "2025-10-05" }
+  ],
+  "screenings": [
+    { "type": "mammogram", "date": "2025-03-11", "result": "BI-RADS 1" },
+    { "type": "fit", "date": "2026-02-01", "result": "negative" },
+    { "type": "retinal_exam", "date": "2024-11-18", "result": "no retinopathy" }
+  ],
+  "appointments": [
+    { "date": "2026-11-20", "department": "Primary Care", "reason": "Diabetes follow-up" }
+  ],
+  "encounters": [
+    { "type": "outpatient", "date": "2026-01-20", "reason": "Diabetes follow-up" }
+  ]
+}

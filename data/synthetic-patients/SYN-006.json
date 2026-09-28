@@ -1,0 +1,28 @@
+{
+  "id": "SYN-006",
+  "mrn": "SYN-MRN-100006",
+  "synthetic": true,
+  "name": "Sofia Alvarez",
+  "birthDate": "1992-07-22",
+  "sex": "female",
+  "preferredLanguage": "es",
+  "advanceDirectiveOnFile": false,
+  "conditions": [],
+  "medications": [],
+  "labs": [
+    { "code": "718-7", "display": "Hemoglobin", "value": 13.1, "unit": "g/dL", "date": "2025-11-04", "interpretation": "N" }
+  ],
+  "vitals": [
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 114, "unit": "mmHg", "dateTime": "2025-11-04T15:00:00" }
+  ],
+  "immunizations": [
+    { "vaccine": "influenza", "date": "2026-09-12" }
+  ],
+  "screenings": [],
+  "appointments": [
+    { "date": "2026-10-08", "department": "Primary Care", "reason": "Annual wellness visit" }
+  ],
+  "encounters": [
+    { "type": "outpatient", "date": "2025-11-04", "reason": "Annual wellness visit" }
+  ]
+}

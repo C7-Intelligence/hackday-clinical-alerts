@@ -1,0 +1,35 @@
+{
+  "id": "SYN-003",
+  "mrn": "SYN-MRN-100003",
+  "synthetic": true,
+  "name": "Daniel Reyes",
+  "birthDate": "1981-11-19",
+  "sex": "male",
+  "preferredLanguage": "es",
+  "advanceDirectiveOnFile": false,
+  "conditions": [
+    { "code": "L03.116", "display": "Cellulitis of left lower limb", "onset": "2026-09-26", "status": "active", "tags": ["infection"] }
+  ],
+  "medications": [
+    { "name": "Cephalexin", "dose": "500 mg", "route": "PO", "frequency": "QID", "class": "cephalosporin", "start": "2026-09-26", "status": "active" }
+  ],
+  "labs": [
+    { "code": "6690-2", "display": "WBC count", "value": 15.2, "unit": "10*3/uL", "date": "2026-09-29", "interpretation": "H" },
+    { "code": "2524-7", "display": "Lactate", "value": 3.1, "unit": "mmol/L", "date": "2026-09-29", "interpretation": "H" },
+    { "code": "2951-2", "display": "Sodium", "value": 138, "unit": "mmol/L", "date": "2026-09-29", "interpretation": "N" }
+  ],
+  "vitals": [
+    { "code": "8310-5", "display": "Body temperature", "value": 38.9, "unit": "Cel", "dateTime": "2026-09-29T08:40:00" },
+    { "code": "8867-4", "display": "Heart rate", "value": 118, "unit": "/min", "dateTime": "2026-09-29T08:40:00" },
+    { "code": "9279-1", "display": "Respiratory rate", "value": 24, "unit": "/min", "dateTime": "2026-09-29T08:40:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 94, "unit": "mmHg", "dateTime": "2026-09-29T08:40:00" }
+  ],
+  "immunizations": [
+    { "vaccine": "influenza", "date": "2026-09-15" }
+  ],
+  "screenings": [],
+  "appointments": [],
+  "encounters": [
+    { "type": "emergency", "date": "2026-09-29", "reason": "Worsening leg redness, fever" }
+  ]
+}

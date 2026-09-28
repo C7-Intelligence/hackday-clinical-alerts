@@ -1,0 +1,13 @@
+{
+  "synthetic": true,
+  "asOf": "2026-09-29",
+  "patients": [
+    { "id": "SYN-001", "name": "Walter Okafor", "age": 72, "sex": "male", "file": "SYN-001.json" },
+    { "id": "SYN-002", "name": "Priya Raman", "age": 58, "sex": "female", "file": "SYN-002.json" },
+    { "id": "SYN-003", "name": "Daniel Reyes", "age": 44, "sex": "male", "file": "SYN-003.json" },
+    { "id": "SYN-004", "name": "Eleanor Whitfield", "age": 81, "sex": "female", "file": "SYN-004.json" },
+    { "id": "SYN-005", "name": "Marcus Lee", "age": 52, "sex": "male", "file": "SYN-005.json" },
+    { "id": "SYN-006", "name": "Sofia Alvarez", "age": 34, "sex": "female", "file": "SYN-006.json" },
+    { "id": "SYN-007", "name": "Grace Thompson", "age": 67, "sex": "female", "file": "SYN-007.json" }
+  ]
+}

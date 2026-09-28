@@ -1,0 +1,28 @@
+{
+  "synthetic": true,
+  "note": "Illustrative interaction knowledge for the Neo4j graph and for alert rationale. Demo only, not clinical guidance.",
+  "interactions": [
+    {
+      "id": "IX-HYPERK-RAAS-KSPARING",
+      "between": ["ACE inhibitor", "potassium-sparing diuretic"],
+      "alsoApplies": ["ARB"],
+      "risk": "hyperkalemia",
+      "severity": "high",
+      "relatedRule": "CLIN-HYPERKALEMIA"
+    },
+    {
+      "id": "IX-BLEED-VKA-FQ",
+      "between": ["vitamin K antagonist", "fluoroquinolone"],
+      "risk": "raised INR / bleeding",
+      "severity": "high",
+      "relatedRule": "CLIN-INR-SUPRATHERAPEUTIC"
+    },
+    {
+      "id": "IX-LACTIC-BIGUANIDE-CKD",
+      "between": ["biguanide", "condition:ckd"],
+      "risk": "lactic acidosis when eGFR < 30",
+      "severity": "high",
+      "relatedRule": "CLIN-METFORMIN-RENAL"
+    }
+  ]
+}
