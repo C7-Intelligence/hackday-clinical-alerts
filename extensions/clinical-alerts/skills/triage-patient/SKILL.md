@@ -38,8 +38,12 @@ Write the graph **only if** `GRAPH_SCOPE_SELECTED=yes` **and** you have the Neo4
 - `query` = the exact contents of `.claude/skills/triage-patient/write-triage.cypher` (Stephen's
   `write-triage` statement; don't modify it).
 - `params` = the JSON object in `graph-params.json`.
-- It's idempotent and returns one row `{memberId, alertsWritten, risksLinked}`. The write **succeeded** only if
-  `alertsWritten` equals the number of alerts in `graph-params.json`.
+- It's idempotent (it replaces the member's previous alerts). The MCP write tool returns Neo4j **update
+  counters**, not the statement's `RETURN` row, e.g.
+  `{"_contains_updates": true, "nodes_created": 6, "nodes_deleted": 6, "relationships_created": 9, …}`.
+  The write **succeeded** only if the tool returned no error **and** `nodes_created` ≥ the number of alerts
+  in `graph-params.json` (one Alert node per alert, plus 1 if the Member node is new). With zero alerts,
+  no error is enough.
 
 Set `GRAPH=written` on success. In every other case (no scope, no tool, a tool error, a timeout, a count
 mismatch), don't retry more than once, then run:

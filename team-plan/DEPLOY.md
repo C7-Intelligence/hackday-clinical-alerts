@@ -38,6 +38,8 @@ Names must match exactly: the create form looks up `neo4j-mcp-scope` by name.
 
 1. **AI Admin → MCP Servers → Add**: Name `neo4j-mcp`, Provider Type `Other` (type `other`), Config Type `Raw`,
    and paste the JSON config from the Sponsor Integrations doc (it uses `${credential.uri}` etc., with no secrets in it).
+   Then **⋮ → Edit** and set **auto-approved tools** to `write_neo4j_cypher`, `read_neo4j_cypher`, `get_neo4j_schema`.
+   **Required:** without it the triage's graph write waits for a manual approval click and the run stalls.
 2. **Providers → IT → Other → Add**: Name `neo4j-mcp`, Type `Other`, Account ID = the Aura `uri`.
 3. **Credentials** `neo4j-credentials`: four String fields, all lowercase: `uri`, `username`, `password`,
    `database`. Copy each value from the Aura credentials file (`NEO4J_URI`, `NEO4J_USERNAME`,
@@ -60,8 +62,9 @@ Names must match exactly: the create form looks up `neo4j-mcp-scope` by name.
 
 ## 5. Before judging
 
-- Pre-run a completed triage for **every member** (SYN-001…007). If the wifi or LLM is slow on stage, open an
-  existing result instead of waiting on a live run.
+- Pre-run a completed triage for **every member** (SYN-001…007), **one at a time**: start the next only after
+  the previous one completes. Started together, the Neo4j MCP servers fail to connect and every run shows the graph
+  as skipped (amber). If the wifi or LLM is slow on stage, open an existing result instead of waiting on a live run.
 - Clear old test rows so the list shows one clean run per member (open the row → ⋮ → Delete).
 - Jason's laptop runs the **same `main` commit** as the backup. Check with `git log -1 --oneline` on both.
 
@@ -69,7 +72,8 @@ Names must match exactly: the create form looks up `neo4j-mcp-scope` by name.
 
 | Symptom | Fix |
 |---|---|
-| Triage sits on one step for 5+ min ("⚠ Stalled") | The agent lost its LLM connection (network). Run a new triage; delete the stalled row after. |
+| Triage sits on one step for 5+ min ("⚠ Stalled") | The agent lost its LLM connection (network), or a Neo4j tool is waiting for approval (set auto-approve, §3.1). Run a new triage; delete the stalled row after. |
+| Knowledge graph phase amber with the scope attached | Several triages started at once, so the MCP server failed to connect. Re-run that member on its own. |
 | `Failed` with "patient file not found" | You built without `sync-engine.sh`. Run step 2 again. |
 | Nav item missing after deploy | Hard-refresh the portal (Ctrl+Shift+R). |
 | Build fails on `npm ci` | Make sure `extensions/clinical-alerts/frontend/vendor/*.tgz` exists (`git pull`). |
