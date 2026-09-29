@@ -1,0 +1,65 @@
+{
+  "manifestVersion": "1.0",
+  "id": "c7.clinical-alerts",
+  "name": "Clinical Alerts",
+  "version": "0.2.4",
+
+  "sdkVersion": "REPLACED_BY_SKILL_FROM_sdk-version_ENDPOINT",
+  "backend": {
+    "assemblyDir": "c7.clinical-alerts/0.2.4/backend",
+    "entryAssembly": "Duplo.Extension.ClinicalAlerts.dll"
+  },
+
+  "resources": [
+    {
+      "ticketOriginType": "AlertTriage",
+      "restSegment": "extensions/alerttriages",
+      "subType": "alert-triage",
+      "archetype": "typed",
+      "registrar": "DevOpsResource",
+      "entityType": "Duplo.Extension.ClinicalAlerts.AlertTriage",
+      "specType": "Duplo.Extension.ClinicalAlerts.AlertTriageSpec",
+      "resultType": "Duplo.Extension.ClinicalAlerts.AlertTriageResult",
+      "hooksType": "Duplo.Extension.ClinicalAlerts.AlertTriageHooks",
+      "serviceType": "Duplo.Extension.ClinicalAlerts.AlertTriageService"
+    }
+  ],
+
+  "skills": [
+    { "folder": "c7.clinical-alerts/0.2.4/skills/triage-patient", "isBuiltIn": true }
+  ],
+  "skillMappings": [
+    { "originType": "AlertTriage", "subType": "alert-triage", "skillNames": ["triage-patient"], "timeout": { "provision": 600, "deprovision": 120 } }
+  ],
+
+  "frontend": {
+    "remote": {
+      "remoteName": "c7ClinicalAlerts",
+      "remoteEntry": "/v1/aiservicedesk/extensions/c7.clinical-alerts/fe/remoteEntry.json",
+      "exposedModule": "./Extension",
+      "type": "module"
+    },
+    "menus": [
+      {
+        "id": "c7.clinical-alerts-clinical",
+        "title": "Clinical",
+        "type": "collapsible-section",
+        "matIcon": "heart-pulse",
+        "order": 30,
+        "children": [
+          {
+            "id": "c7.clinical-alerts-clinical-alert-triage",
+            "title": "Alert Triage",
+            "type": "item",
+            "matIcon": "stethoscope",
+            "relativeUrl": "extensions/alerttriages",
+            "order": 1
+          }
+        ]
+      }
+    ],
+    "routes": [
+      { "path": "extensions/alerttriages", "resourceType": "AlertTriage", "subType": "alert-triage" }
+    ]
+  }
+}

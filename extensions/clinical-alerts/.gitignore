@@ -1,0 +1,13 @@
+# Build artifacts — never committed; produced by the build skill in the ticket workdir.
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/out-tsc/
+pkg/
+*.zip
+
+# Build inputs copied from engine/ and data/ by sync-engine.sh (not sources)
+skills/triage-patient/triage.py
+skills/triage-patient/rules/
+skills/triage-patient/data/
+skills/triage-patient/write-triage.cypher
