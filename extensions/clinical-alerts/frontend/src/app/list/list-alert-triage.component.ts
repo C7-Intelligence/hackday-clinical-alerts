@@ -13,7 +13,12 @@ import { findPatient } from '../shared/tiers';
 interface Row extends AlertTriage {
   patientName: string;
   patientId: string;
+  /** Still in flight but no status beat for 5+ minutes (e.g. the agent lost its LLM connection). */
+  stalled: boolean;
 }
+
+const ACTIVE = ['New', 'TicketCreated', 'Processing'];
+const STALL_MS = 5 * 60 * 1000;
 
 @Component({
   selector: 'ca-list',
@@ -23,6 +28,7 @@ interface Row extends AlertTriage {
     .pt-name:hover { color: var(--primary, #7367F0); }
     .pt-id { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.75rem; color: #6B7280; }
     .when { color: #4B5563; font-size: 0.85rem; }
+    .stalled { color: #B45309; font-weight: 600; font-size: 0.85rem; cursor: help; }
   `],
   template: `
     <ca-synthetic-banner />
@@ -65,7 +71,13 @@ interface Row extends AlertTriage {
             @if (row.result?.counts) {
               <ca-tier-chips [counts]="row.result.counts" />
             } @else {
-              <span class="text-muted">{{ row.status === 'Failed' ? '—' : 'Triaging…' }}</span>
+              @if (row.status === 'Failed') {
+                <span class="text-muted">—</span>
+              } @else if (row.stalled) {
+                <span class="stalled" title="No progress update for 5+ minutes. Open the agent ticket.">⚠ Stalled</span>
+              } @else {
+                <span class="text-muted">Triaging…</span>
+              }
             }
           </ng-template>
         </ngx-datatable-column>
@@ -120,7 +132,9 @@ export class ListAlertTriageComponent implements OnInit {
       next: rows => {
         const mapped = (rows ?? []).map(r => {
           const id = r.result?.patientId || r.spec?.patientId || '';
-          return { ...r, patientId: id, patientName: r.result?.patientName || findPatient(id)?.name || id || '—' };
+          const stalled = ACTIVE.includes(r.status) && !r.result?.counts
+            && !!r.updatedAt && Date.now() - new Date(r.updatedAt).getTime() > STALL_MS;
+          return { ...r, stalled, patientId: id, patientName: r.result?.patientName || findPatient(id)?.name || id || '—' };
         });
         // Newest run first.
         mapped.sort((a, b) => (b.createdAt ?? '').localeCompare(a.createdAt ?? ''));
