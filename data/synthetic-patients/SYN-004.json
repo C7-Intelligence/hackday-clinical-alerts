@@ -1,0 +1,33 @@
+{
+  "id": "SYN-004",
+  "mrn": "SYN-MRN-200004",
+  "synthetic": true,
+  "name": "Sofia Alvarez",
+  "birthDate": "1988-07-22",
+  "sex": "female",
+  "membership": { "plan": "All-Inclusive", "since": "2025-11-01" },
+  "conditions": [
+    { "code": "E66.811", "display": "Obesity, class 1", "onset": "2025-11-01", "status": "active", "tags": ["obesity"] }
+  ],
+  "medications": [
+    { "name": "Semaglutide", "dose": "0.5 mg", "route": "SC", "frequency": "weekly", "class": "GLP-1 receptor agonist", "start": "2026-03-15", "status": "active" }
+  ],
+  "labs": [
+    { "code": "2160-0", "display": "Creatinine", "value": 0.7, "unit": "mg/dL", "date": "2026-06-01", "interpretation": "N" },
+    { "code": "2160-0", "display": "Creatinine", "value": 0.9, "unit": "mg/dL", "date": "2026-09-25", "interpretation": "N" },
+    { "code": "3094-0", "display": "BUN", "value": 22, "unit": "mg/dL", "date": "2026-09-25", "interpretation": "H" }
+  ],
+  "vitals": [
+    { "code": "29463-7", "display": "Body weight", "value": 84.0, "unit": "kg", "dateTime": "2026-03-10T11:00:00" },
+    { "code": "29463-7", "display": "Body weight", "value": 72.6, "unit": "kg", "dateTime": "2026-09-25T11:00:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 112, "unit": "mmHg", "dateTime": "2026-09-25T11:00:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 72, "unit": "mmHg", "dateTime": "2026-09-25T11:00:00" }
+  ],
+  "screenings": [],
+  "appointments": [
+    { "date": "2026-10-09", "service": "Aesthetics", "reason": "Skin-laxity consult after weight loss" }
+  ],
+  "encounters": [
+    { "type": "lab draw", "date": "2026-09-25", "reason": "GLP-1 monitoring labs" }
+  ]
+}

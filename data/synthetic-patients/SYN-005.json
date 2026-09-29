@@ -1,0 +1,37 @@
+{
+  "id": "SYN-005",
+  "mrn": "SYN-MRN-200005",
+  "synthetic": true,
+  "name": "Robert Hayes",
+  "birthDate": "1963-01-15",
+  "sex": "male",
+  "membership": { "plan": "All-Inclusive", "since": "2023-01-20" },
+  "conditions": [
+    { "code": "E29.1", "display": "Testicular hypofunction (hypogonadism)", "onset": "2023-02-01", "status": "active", "tags": ["hypogonadism"] },
+    { "code": "I10", "display": "Essential hypertension", "onset": "2019-06-12", "status": "active", "tags": ["hypertension"] }
+  ],
+  "medications": [
+    { "name": "Testosterone cypionate", "dose": "200 mg", "route": "IM", "frequency": "weekly", "class": "androgen", "start": "2023-02-15", "status": "active" },
+    { "name": "Amlodipine", "dose": "5 mg", "route": "PO", "frequency": "daily", "class": "calcium channel blocker", "start": "2019-06-12", "status": "active" }
+  ],
+  "labs": [
+    { "code": "4544-3", "display": "Hematocrit", "value": 49.0, "unit": "%", "date": "2026-03-05", "interpretation": "N" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 51.2, "unit": "%", "date": "2026-06-10", "interpretation": "H" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 50.8, "unit": "%", "date": "2026-09-28", "interpretation": "H" },
+    { "code": "2857-1", "display": "PSA", "value": 2.1, "unit": "ng/mL", "date": "2026-06-10", "interpretation": "N" },
+    { "code": "13457-7", "display": "LDL cholesterol (calculated)", "value": 96, "unit": "mg/dL", "date": "2026-09-28", "interpretation": "N" }
+  ],
+  "vitals": [
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 152, "unit": "mmHg", "dateTime": "2026-09-20T09:00:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 96, "unit": "mmHg", "dateTime": "2026-09-20T09:00:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 184, "unit": "mmHg", "dateTime": "2026-09-28T09:20:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 112, "unit": "mmHg", "dateTime": "2026-09-28T09:20:00" }
+  ],
+  "screenings": [
+    { "type": "colonoscopy", "date": "2018-04-12", "result": "normal" }
+  ],
+  "appointments": [],
+  "encounters": [
+    { "type": "concierge visit", "date": "2026-09-28", "reason": "Headache; ran out of amlodipine last week" }
+  ]
+}

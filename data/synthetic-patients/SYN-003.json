@@ -1,0 +1,36 @@
+{
+  "id": "SYN-003",
+  "mrn": "SYN-MRN-200003",
+  "synthetic": true,
+  "name": "Priya Raman",
+  "birthDate": "1968-06-02",
+  "sex": "female",
+  "membership": { "plan": "All-Inclusive", "since": "2025-01-15" },
+  "conditions": [
+    { "code": "E11.9", "display": "Type 2 diabetes mellitus without complications", "onset": "2017-09-05", "status": "active", "tags": ["diabetes"] },
+    { "code": "E66.812", "display": "Obesity, class 2", "onset": "2015-03-22", "status": "active", "tags": ["obesity"] }
+  ],
+  "medications": [
+    { "name": "Semaglutide", "dose": "1.0 mg", "route": "SC", "frequency": "weekly", "class": "GLP-1 receptor agonist", "start": "2026-05-01", "status": "active" }
+  ],
+  "labs": [
+    { "code": "4548-4", "display": "Hemoglobin A1c", "value": 8.2, "unit": "%", "date": "2026-02-10", "interpretation": "H" },
+    { "code": "2160-0", "display": "Creatinine", "value": 0.9, "unit": "mg/dL", "date": "2026-08-20", "interpretation": "N" },
+    { "code": "2160-0", "display": "Creatinine", "value": 1.6, "unit": "mg/dL", "date": "2026-09-28", "interpretation": "H" },
+    { "code": "3094-0", "display": "BUN", "value": 34, "unit": "mg/dL", "date": "2026-09-28", "interpretation": "H" },
+    { "code": "2823-3", "display": "Potassium", "value": 4.3, "unit": "mmol/L", "date": "2026-09-28", "interpretation": "N" }
+  ],
+  "vitals": [
+    { "code": "29463-7", "display": "Body weight", "value": 98.0, "unit": "kg", "dateTime": "2026-04-20T10:00:00" },
+    { "code": "29463-7", "display": "Body weight", "value": 89.2, "unit": "kg", "dateTime": "2026-09-28T10:00:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 128, "unit": "mmHg", "dateTime": "2026-09-28T10:00:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 80, "unit": "mmHg", "dateTime": "2026-09-28T10:00:00" }
+  ],
+  "screenings": [
+    { "type": "fit", "date": "2026-02-01", "result": "negative" }
+  ],
+  "appointments": [],
+  "encounters": [
+    { "type": "concierge visit", "date": "2026-09-28", "reason": "Vomiting x3 days since semaglutide dose increase" }
+  ]
+}

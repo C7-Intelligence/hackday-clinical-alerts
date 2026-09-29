@@ -1,0 +1,11 @@
+{
+  "synthetic": true,
+  "note": "Illustrative therapy -> monitoring-risk knowledge for the Neo4j graph and for alert rationale. Demo only, not clinical guidance.",
+  "risks": [
+    { "id": "RISK-TRT-ERYTHROCYTOSIS", "therapyClass": "androgen", "risk": "erythrocytosis (rising hematocrit) raises clot and stroke risk", "monitor": "hematocrit", "relatedRules": ["CLIN-TRT-ERYTHROCYTOSIS", "NUDGE-TRT-HCT-TREND"] },
+    { "id": "RISK-TRT-HYPERTENSION", "therapyClass": "androgen", "risk": "blood pressure elevation", "monitor": "blood pressure", "relatedRules": ["NUDGE-TRT-BP-ELEVATED", "CLIN-BP-SEVERE"] },
+    { "id": "RISK-TRT-PROSTATE", "therapyClass": "androgen", "risk": "prostate monitoring required on testosterone therapy", "monitor": "PSA", "relatedRules": ["NUDGE-TRT-PSA-OVERDUE"] },
+    { "id": "RISK-GLP1-DEHYDRATION", "therapyClass": "GLP-1 receptor agonist", "risk": "nausea and reduced intake lead to dehydration (rising BUN/creatinine ratio)", "monitor": "BUN, creatinine", "relatedRules": ["NUDGE-GLP1-HYDRATION"] },
+    { "id": "RISK-GLP1-AKI", "therapyClass": "GLP-1 receptor agonist", "risk": "acute kidney injury from volume depletion", "monitor": "creatinine", "relatedRules": ["CLIN-GLP1-AKI"] }
+  ]
+}

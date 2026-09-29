@@ -1,0 +1,37 @@
+{
+  "id": "SYN-002",
+  "mrn": "SYN-MRN-200002",
+  "synthetic": true,
+  "name": "Marcus Lee",
+  "birthDate": "1980-05-12",
+  "sex": "male",
+  "membership": { "plan": "All-Inclusive", "since": "2024-10-01" },
+  "conditions": [
+    { "code": "E29.1", "display": "Testicular hypofunction (hypogonadism)", "onset": "2024-10-15", "status": "active", "tags": ["hypogonadism"] }
+  ],
+  "medications": [
+    { "name": "Testosterone cypionate", "dose": "160 mg", "route": "IM", "frequency": "weekly", "class": "androgen", "start": "2024-11-04", "status": "active" }
+  ],
+  "labs": [
+    { "code": "2857-1", "display": "PSA", "value": 0.9, "unit": "ng/mL", "date": "2025-08-15", "interpretation": "N" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 47.1, "unit": "%", "date": "2026-03-18", "interpretation": "N" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 49.8, "unit": "%", "date": "2026-06-17", "interpretation": "N" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 52.6, "unit": "%", "date": "2026-09-27", "interpretation": "H" },
+    { "code": "2986-8", "display": "Testosterone, total", "value": 812, "unit": "ng/dL", "date": "2026-09-27", "interpretation": "N" }
+  ],
+  "vitals": [
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 138, "unit": "mmHg", "dateTime": "2026-06-17T08:30:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 86, "unit": "mmHg", "dateTime": "2026-06-17T08:30:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 136, "unit": "mmHg", "dateTime": "2026-09-27T08:40:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 84, "unit": "mmHg", "dateTime": "2026-09-27T08:40:00" }
+  ],
+  "screenings": [
+    { "type": "fit", "date": "2026-01-10", "result": "negative" }
+  ],
+  "appointments": [
+    { "date": "2026-10-05", "service": "HRT/TRT", "reason": "TRT follow-up" }
+  ],
+  "encounters": [
+    { "type": "lab draw", "date": "2026-09-27", "reason": "Quarterly TRT labs" }
+  ]
+}

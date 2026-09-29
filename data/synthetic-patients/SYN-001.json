@@ -1,0 +1,44 @@
+{
+  "id": "SYN-001",
+  "mrn": "SYN-MRN-200001",
+  "synthetic": true,
+  "name": "David Park",
+  "birthDate": "1975-03-02",
+  "sex": "male",
+  "membership": { "plan": "All-Inclusive", "since": "2024-05-01" },
+  "conditions": [
+    { "code": "E29.1", "display": "Testicular hypofunction (hypogonadism)", "onset": "2024-05-20", "status": "active", "tags": ["hypogonadism"] },
+    { "code": "E66.811", "display": "Obesity, class 1", "onset": "2023-01-10", "status": "active", "tags": ["obesity"] }
+  ],
+  "medications": [
+    { "name": "Testosterone cypionate", "dose": "180 mg", "route": "IM", "frequency": "weekly", "class": "androgen", "start": "2024-06-10", "status": "active" },
+    { "name": "Tirzepatide (GIP/GLP-1)", "dose": "7.5 mg", "route": "SC", "frequency": "weekly", "class": "GLP-1 receptor agonist", "start": "2026-04-01", "status": "active" }
+  ],
+  "labs": [
+    { "code": "4544-3", "display": "Hematocrit", "value": 49.5, "unit": "%", "date": "2026-02-20", "interpretation": "N" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 52.1, "unit": "%", "date": "2026-06-15", "interpretation": "H" },
+    { "code": "4544-3", "display": "Hematocrit", "value": 54.8, "unit": "%", "date": "2026-09-26", "interpretation": "HH" },
+    { "code": "2986-8", "display": "Testosterone, total", "value": 1040, "unit": "ng/dL", "date": "2026-09-26", "interpretation": "H" },
+    { "code": "2857-1", "display": "PSA", "value": 1.2, "unit": "ng/mL", "date": "2026-06-15", "interpretation": "N" },
+    { "code": "2160-0", "display": "Creatinine", "value": 1.0, "unit": "mg/dL", "date": "2026-06-15", "interpretation": "N" },
+    { "code": "2160-0", "display": "Creatinine", "value": 1.1, "unit": "mg/dL", "date": "2026-09-26", "interpretation": "N" },
+    { "code": "3094-0", "display": "BUN", "value": 26, "unit": "mg/dL", "date": "2026-09-26", "interpretation": "H" }
+  ],
+  "vitals": [
+    { "code": "29463-7", "display": "Body weight", "value": 112.0, "unit": "kg", "dateTime": "2026-03-28T09:00:00" },
+    { "code": "29463-7", "display": "Body weight", "value": 96.3, "unit": "kg", "dateTime": "2026-09-26T09:00:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 144, "unit": "mmHg", "dateTime": "2026-09-12T09:10:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 90, "unit": "mmHg", "dateTime": "2026-09-12T09:10:00" },
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 148, "unit": "mmHg", "dateTime": "2026-09-26T09:05:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 94, "unit": "mmHg", "dateTime": "2026-09-26T09:05:00" }
+  ],
+  "screenings": [
+    { "type": "colonoscopy", "date": "2021-08-19", "result": "normal" }
+  ],
+  "appointments": [
+    { "date": "2026-10-02", "service": "HRT/TRT", "reason": "TRT dose review" }
+  ],
+  "encounters": [
+    { "type": "concierge visit", "date": "2026-09-26", "reason": "Quarterly TRT + GLP-1 labs; reports mild nausea, low water intake" }
+  ]
+}

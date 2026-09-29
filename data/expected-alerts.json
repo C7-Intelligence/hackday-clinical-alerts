@@ -1,0 +1,17 @@
+{
+  "asOf": "2026-09-29",
+  "note": "Exact set of rule IDs the engine must raise per synthetic member. Order-independent.",
+  "patients": {
+    "SYN-001": ["CLIN-TRT-ERYTHROCYTOSIS", "INFO-NEW-RESULT", "INFO-UPCOMING-APPT", "INFO-WEIGHT-PROGRESS", "NUDGE-GLP1-HYDRATION", "NUDGE-TRT-BP-ELEVATED"],
+    "SYN-002": ["INFO-NEW-RESULT", "INFO-UPCOMING-APPT", "NUDGE-TRT-HCT-TREND", "NUDGE-TRT-PSA-OVERDUE"],
+    "SYN-003": ["CLIN-GLP1-AKI", "INFO-NEW-RESULT", "NUDGE-A1C-OVERDUE"],
+    "SYN-004": ["INFO-UPCOMING-APPT", "INFO-WEIGHT-PROGRESS", "NUDGE-GLP1-HYDRATION"],
+    "SYN-005": ["CLIN-BP-SEVERE", "INFO-NEW-RESULT"],
+    "SYN-006": ["INFO-NEW-RESULT", "INFO-UPCOMING-APPT"],
+    "SYN-007": ["NUDGE-COLORECTAL-SCREEN"]
+  },
+  "cohorts": {
+    "trt-members-with-hematocrit-alert": ["SYN-001", "SYN-002"],
+    "glp1-members-with-kidney-or-hydration-alert": ["SYN-001", "SYN-003", "SYN-004"]
+  }
+}

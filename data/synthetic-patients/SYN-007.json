@@ -1,0 +1,27 @@
+{
+  "id": "SYN-007",
+  "mrn": "SYN-MRN-200007",
+  "synthetic": true,
+  "name": "James Whitaker",
+  "birthDate": "1971-09-03",
+  "sex": "male",
+  "membership": { "plan": "All-Inclusive", "since": "2024-02-01" },
+  "conditions": [
+    { "code": "E11.9", "display": "Type 2 diabetes mellitus without complications", "onset": "2020-01-14", "status": "active", "tags": ["diabetes"] }
+  ],
+  "medications": [
+    { "name": "Metformin", "dose": "1000 mg", "route": "PO", "frequency": "BID", "class": "biguanide", "start": "2020-01-14", "status": "active" }
+  ],
+  "labs": [
+    { "code": "4548-4", "display": "Hemoglobin A1c", "value": 6.9, "unit": "%", "date": "2026-07-01", "interpretation": "H" }
+  ],
+  "vitals": [
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 124, "unit": "mmHg", "dateTime": "2026-07-01T10:30:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 78, "unit": "mmHg", "dateTime": "2026-07-01T10:30:00" }
+  ],
+  "screenings": [],
+  "appointments": [],
+  "encounters": [
+    { "type": "concierge visit", "date": "2026-07-01", "reason": "Diabetes check-in" }
+  ]
+}

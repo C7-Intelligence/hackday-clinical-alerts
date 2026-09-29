@@ -1,0 +1,26 @@
+{
+  "id": "SYN-006",
+  "mrn": "SYN-MRN-200006",
+  "synthetic": true,
+  "name": "Elena Brooks",
+  "birthDate": "1982-02-11",
+  "sex": "female",
+  "membership": { "plan": "All-Inclusive", "since": "2025-06-01" },
+  "conditions": [],
+  "medications": [],
+  "labs": [
+    { "code": "1884-6", "display": "Apolipoprotein B", "value": 78, "unit": "mg/dL", "date": "2026-09-27", "interpretation": "N" },
+    { "code": "4548-4", "display": "Hemoglobin A1c", "value": 5.2, "unit": "%", "date": "2026-09-27", "interpretation": "N" }
+  ],
+  "vitals": [
+    { "code": "8480-6", "display": "Systolic blood pressure", "value": 114, "unit": "mmHg", "dateTime": "2026-09-27T07:45:00" },
+    { "code": "8462-4", "display": "Diastolic blood pressure", "value": 72, "unit": "mmHg", "dateTime": "2026-09-27T07:45:00" }
+  ],
+  "screenings": [],
+  "appointments": [
+    { "date": "2026-10-07", "service": "Longevity", "reason": "Annual longevity panel review" }
+  ],
+  "encounters": [
+    { "type": "lab draw", "date": "2026-09-27", "reason": "Annual longevity panel" }
+  ]
+}
