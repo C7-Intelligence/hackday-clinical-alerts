@@ -98,8 +98,11 @@ jq '{member: {id: .patientId, name: .patientName, age, sex, memberSince},
 
 Open **https://browser.neo4j.io**, connect with the Aura URI and credentials, then:
 
-1. **Style:** drag `engine/graph/style.grass` onto the Browser window. Alerts turn red, orange or blue by
-   tier, members are dark, therapy classes teal, and risks brown.
+1. **Style:** browser.neo4j.io is now the new Query app, which ignores `.grass` files. Instead, run a
+   query, click each label chip in *Results overview* and pick a colour: Clinical red, Nudge orange,
+   Informational blue, Member grey, Risk teal, TherapyClass purple. Then click the ⇅ icon next to
+   *Nodes* and drag **Alert** to the bottom of the list, so the tier colour wins over the grey Alert
+   colour. `style.grass` still works in the classic Browser or Neo4j Desktop.
 2. **Save the queries:** paste each one below into the editor and click ☆ (save as favourite). Name them
    exactly as shown so they're easy to find on stage.
 

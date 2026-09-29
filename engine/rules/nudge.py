@@ -203,7 +203,8 @@ def colorectal_screen(patient: dict, as_of: date) -> list:
         "Colorectal cancer screening due",
         f"{detail}. Members aged {lo}–{hi} need a colonoscopy every {COLONOSCOPY_YEARS} years or a FIT every year.",
         "Offer a FIT kit by mail or a colonoscopy referral.",
-        [{"kind": "screening", "display": s.get("type"), "value": s.get("result"), "date": iso(d)}
+        [{"kind": "screening", "display": f"{s.get('type')}" + (f" ({s.get('result')})" if s.get("result") else ""),
+          "date": iso(d)}
          for d, s in colorectal[-1:]]
         + [{"kind": "demographic", "display": f"Age {age}", "date": None}],
     )]
