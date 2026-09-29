@@ -38,8 +38,13 @@ Names must match exactly: the create form looks up `neo4j-mcp-scope` by name.
 
 1. **AI Admin → MCP Servers → Add**: Name `neo4j-mcp`, Provider Type `Other` (type `other`), Config Type `Raw`,
    and paste the JSON config from the Sponsor Integrations doc (it uses `${credential.uri}` etc., with no secrets in it).
-   Then **⋮ → Edit** and set **auto-approved tools** to `write_neo4j_cypher`, `read_neo4j_cypher`, `get_neo4j_schema`.
-   **Required:** without it the triage's graph write waits for a manual approval click and the run stalls.
+   Then pre-approve its tools (**required**: without it the graph write waits for an approval click and the
+   run stalls). From the repo root:
+   ```bash
+   ./extensions/clinical-alerts/neo4j-autoapprove.sh    # → "'neo4j-mcp' now auto-approves [...]"
+   ```
+   This is a standing setting on the MCP server (`AutoApprovedTools`), which applies to every ticket using the
+   scope. It's not the per-ticket "Command Execution Permissions", which only cover shell commands.
 2. **Providers → IT → Other → Add**: Name `neo4j-mcp`, Type `Other`, Account ID = the Aura `uri`.
 3. **Credentials** `neo4j-credentials`: four String fields, all lowercase: `uri`, `username`, `password`,
    `database`. Copy each value from the Aura credentials file (`NEO4J_URI`, `NEO4J_USERNAME`,
@@ -72,7 +77,7 @@ Names must match exactly: the create form looks up `neo4j-mcp-scope` by name.
 
 | Symptom | Fix |
 |---|---|
-| Triage sits on one step for 5+ min ("⚠ Stalled") | The agent lost its LLM connection (network), or a Neo4j tool is waiting for approval (set auto-approve, §3.1). Run a new triage; delete the stalled row after. |
+| Triage sits on one step for 5+ min ("⚠ Stalled") | The agent lost its LLM connection (network), or a Neo4j tool is waiting for approval (run `neo4j-autoapprove.sh`, §3.1). Run a new triage; delete the stalled row after. |
 | Knowledge graph phase amber with the scope attached | Several triages started at once, so the MCP server failed to connect. Re-run that member on its own. |
 | `Failed` with "patient file not found" | You built without `sync-engine.sh`. Run step 2 again. |
 | Nav item missing after deploy | Hard-refresh the portal (Ctrl+Shift+R). |
