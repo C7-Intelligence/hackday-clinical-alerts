@@ -40,7 +40,10 @@ Names must match exactly: the create form looks up `neo4j-mcp-scope` by name.
    and paste the JSON config from the Sponsor Integrations doc (it uses `${credential.uri}` etc., with no secrets in it).
 2. **Providers → IT → Other → Add**: Name `neo4j-mcp`, Type `Other`, Account ID = the Aura `uri`.
 3. **Credentials** `neo4j-credentials`: four String fields, all lowercase: `uri`, `username`, `password`,
-   `database`. **Type the password from the Aura credentials file yourself. Never paste it into chat, Slack or git.**
+   `database`. Copy each value from the Aura credentials file (`NEO4J_URI`, `NEO4J_USERNAME`,
+   `NEO4J_PASSWORD`, `NEO4J_DATABASE`). **Don't assume `neo4j`**: newer Aura instances name the database
+   (and often the username) after the instance ID, e.g. `9ca22bf8`.
+   **Type the password yourself. Never paste it into chat, Slack or git.**
 4. **Scope** `neo4j-mcp-scope`: credential `neo4j-credentials` + MCP server `neo4j-mcp`.
 5. **Attach** it to the `extension-dev` workspace.
 6. **Verify**: AI DevOps → new HelpDesk ticket → Select Scopes → `neo4j-mcp-scope` → ask
