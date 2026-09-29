@@ -126,7 +126,7 @@ agent skill. Two people worked in parallel against a written contract, each with
 ## Team
 
 - **Jason Redwine**: J-Harmony × Cyber7Group · extension, portal UI, agent skill, platform integration
-- **Stephen [Last name]**: J-Harmony × Cyber7Group · rules engine, tests, Neo4j knowledge graph
+- **Stephen Simmons**: J-Harmony × Cyber7Group · rules engine, tests, Neo4j knowledge graph
 
 ## Disclaimer
 
