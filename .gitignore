@@ -1,0 +1,10 @@
+# Secrets: never commit Neo4j credentials or env files
+.env
+.env.*
+*.credentials
+Neo4j-*.txt
+engine/graph/neo4j.env
+engine/graph/.venv/
+
+__pycache__/
+*.pyc
