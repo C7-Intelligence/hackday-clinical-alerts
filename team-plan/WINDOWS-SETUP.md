@@ -44,7 +44,14 @@ that got it running on Jason's Windows 11 laptop. **Do this before the day. The 
    The second line matters: without it you get `claude: command not found`. Sign in when prompted, then
    type `/duplo`, and `/duplo-extension` should appear. Always start `claude` from inside the repo folder.
 
-7. **For the Neo4j seed loader:** Ubuntu's Python has no `venv` or `pip` by default, so run
+7. **Set your git identity** (a fresh Ubuntu has none, and your first commit fails with "Author identity unknown"):
+   ```
+   git config --global user.name "Your Name" && git config --global user.email "<your GitHub email>"
+   ```
+   Also sign in to GitHub so git can read our private repo: `sudo apt install -y gh && gh auth login && gh auth setup-git`
+   (pick GitHub.com → HTTPS → Yes → Login with a web browser).
+
+8. **For the Neo4j seed loader:** Ubuntu's Python has no `venv` or `pip` by default, so run
    `sudo apt install -y python3-venv python3-pip`. Then `python3 -m venv .venv && .venv/bin/pip install neo4j`.
 
 On the day, Stephen clones our team repo into Ubuntu (e.g. `~/hackday-clinical-alerts`) and runs
