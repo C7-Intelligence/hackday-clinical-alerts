@@ -43,6 +43,7 @@ const GRAPH_SKIPPED = 'Graph unavailable — skipped';
     .summary p { margin: 0; color: #1F2937; font-size: 0.95rem; line-height: 1.5; }
     .summary .meta { margin-top: 0.4rem; font-size: 0.78rem; color: #6B7280; }
     .graph-note { margin-top: 0.4rem; font-size: 0.78rem; color: #92400E; }
+    .graph-ok { margin-top: 0.4rem; font-size: 0.78rem; color: #065F46; }
     .tier { margin-bottom: 1.4rem; }
     .tier-h { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.6rem; padding-bottom: 0.35rem; border-bottom: 2px solid; }
     .tier-h h3 { margin: 0; font-size: 1rem; font-weight: 700; }
@@ -120,9 +121,9 @@ const GRAPH_SKIPPED = 'Graph unavailable — skipped';
                   <li [ngbNavItem]="'overview'">
                     <a ngbNavLink>Alerts</a>
                     <ng-template ngbNavContent>
-                      @if (it.faults?.length) {
-                        <div class="alert alert-danger py-1 px-2 mb-1">
-                          @for (f of it.faults; track f) { <div>{{ f }}</div> }
+                      @if (faults().length) {
+                        <div class="alert py-1 px-2 mb-1" [class.alert-danger]="it.status === 'Failed'" [class.alert-warning]="it.status !== 'Failed'">
+                          @for (f of faults(); track f) { <div>{{ f }}</div> }
                         </div>
                       }
                       @if (it.result?.alerts) {
@@ -131,8 +132,10 @@ const GRAPH_SKIPPED = 'Graph unavailable — skipped';
                             <span class="lbl">{{ it.result?.summary ? 'Patient summary · AI explanation' : 'Triage summary' }}</span>
                             <p>{{ summary() }}</p>
                             <div class="meta">Engine {{ it.result?.engineVersion || '—' }} · rules decide, the graph connects, the AI explains.</div>
-                            @if (graphSkipped()) {
-                              <div class="graph-note">Knowledge graph unavailable: this triage wasn't written to Neo4j.</div>
+                            @if (graph().written) {
+                              <div class="graph-ok">✓ Written to the knowledge graph: {{ graph().text }}</div>
+                            } @else if (graph().skipped) {
+                              <div class="graph-note">⚠ Knowledge graph {{ graph().text }}</div>
                             }
                           </div>
                           <ca-tier-chips [counts]="it.result?.counts" />
@@ -239,10 +242,43 @@ export class ViewAlertTriageComponent implements OnInit {
   });
   protected readonly memberSince = computed(() => monthYear(this.item()?.result?.memberSince || this.patient()?.memberSince));
 
-  protected readonly graphSkipped = computed(() =>
-    this.item()?.result?.graphStatus === 'skipped' || this.graphSkipSeen());
+  /**
+   * The Knowledge graph step as it really happened. It counts as written only when the skill reported
+   * graphStatus=written (the MCP write returned every alert). Anything else is skipped (amber): no scope,
+   * no MCP tool, or a failed write.
+   */
+  protected readonly graph = computed(() => {
+    const it = this.item();
+    const ready = ViewAlertTriageComponent.READY.includes(it?.status ?? '');
+    const scoped = (it?.spec?.scopeIds?.length ?? 0) > 0;
+    const written = it?.result?.graphStatus === 'written';
+    const pastGraph = this.working() && this.maxPhase() > 2;
+    const skipped = !written && (
+      it?.result?.graphStatus === 'skipped' || this.graphSkipSeen() || (ready && !!it?.result) || (pastGraph && !scoped));
+    const n = it?.result?.alerts?.length ?? 0;
+    const text = written ? `member + ${n} alert${n === 1 ? '' : 's'} in Neo4j`
+      : !scoped ? 'skipped: neo4j-mcp-scope not attached' : 'unavailable — skipped';
+    return { written, skipped, scoped, text };
+  });
 
   protected readonly explainPending = computed(() => !!this.item()?.spec?.explain && this.working());
+
+  /** Faults live on the entity or, for status callbacks, on result.faults (BaseResult). */
+  protected readonly faults = computed<string[]>(() => {
+    const it = this.item();
+    return (it?.faults?.length ? it.faults : it?.result?.faults) ?? [];
+  });
+
+  /** Minutes since the last status beat while the agent should be working (0 = fine). >= 5 means stalled. */
+  private readonly now = signal(Date.now());
+  protected readonly stalledMin = computed(() => {
+    const it = this.item();
+    if (!this.working() || !it?.updatedAt) {
+      return 0;
+    }
+    const min = Math.floor((this.now() - new Date(it.updatedAt).getTime()) / 60000);
+    return min >= 5 ? min : 0;
+  });
 
   protected readonly summary = computed(() => {
     const r = this.item()?.result;
@@ -278,19 +314,30 @@ export class ViewAlertTriageComponent implements OnInit {
     const state = (i: number): LifecyclePhase['state'] => {
       if (ready) return 'done';
       if (failed) return i < cur ? 'done' : i === cur ? 'fail' : 'todo';
-      if (working || waiting) return i < cur ? 'done' : i === cur ? 'now' : 'todo';
+      if (working || waiting) return i < cur ? 'done' : i === cur ? (this.stalledMin() ? 'warn' : 'now') : 'todo';
       return 'todo';
     };
+    const stalled = this.stalledMin();
     const live = (i: number, idle: string) =>
-      (working && i === cur) ? (it.subStatus || idle) : (failed && i === cur) ? (it.faults?.[0] || it.subStatus || 'Failed') : idle;
+      (working && i === cur && stalled) ? `Stalled: no update for ${stalled} min. Open the agent ticket.`
+      : (working && i === cur) ? (it.subStatus || idle) : (failed && i === cur) ? (this.faults()[0] || it.subStatus || 'Failed') : idle;
 
-    const graphState = this.graphSkipped() && (ready || cur > 2) ? 'warn' : state(2);
+    const g = this.graph();
+    const graphState: LifecyclePhase['state'] = g.written && ready ? 'done' : g.skipped ? 'warn' : state(2);
+    const graphSub = g.written ? `Member + ${it.result?.alerts?.length ?? 0} alerts written to Neo4j`
+      : g.skipped ? (g.scoped ? 'Graph unavailable — skipped' : 'Skipped: neo4j-mcp-scope not attached')
+      : live(2, 'Member + alerts written to Neo4j');
+    const explainSkipped = ready && explain && this.faults().includes('Explanation skipped');
 
     const phases: LifecyclePhase[] = [
       { label: 'Requested', subtitle: this.fmt(it.createdAt), state: 'done' },
       { label: 'Rules engine', subtitle: live(1, 'Deterministic alert rules'), state: state(1) },
-      { label: 'Knowledge graph', subtitle: graphState === 'warn' ? 'Graph unavailable — skipped' : live(2, 'Member + alerts written to Neo4j'), state: graphState },
-      { label: 'Clinical rationale', subtitle: explain ? live(3, 'AI explains each alert in plain language') : 'Skipped (not requested)', state: state(3) },
+      { label: 'Knowledge graph', subtitle: graphSub, state: graphState },
+      { label: 'Clinical rationale',
+        subtitle: !explain ? 'Skipped (not requested)'
+          : explainSkipped ? 'Explanation skipped: engine text shown'
+          : live(3, ready ? 'Plain-language rationale on every alert' : 'AI explains each alert in plain language'),
+        state: explainSkipped ? 'warn' : state(3) },
       { label: 'Results ready', subtitle: ready ? this.fmt(it.updatedAt) : live(4, 'Alert cards posted'), state: state(4) },
     ];
     if (waiting) {
@@ -335,6 +382,7 @@ export class ViewAlertTriageComponent implements OnInit {
   private refresh(): void {
     const id = this.route.snapshot.params['id'];
     this.svc.get(id).subscribe(i => {
+      this.now.set(Date.now());
       this.item.set(i);
       const ph = PHASE_OF[i?.subStatus ?? ''];
       if (ph && ph > this.maxPhase()) {

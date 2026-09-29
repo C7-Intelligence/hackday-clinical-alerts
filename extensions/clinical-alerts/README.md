@@ -18,12 +18,14 @@ member and alerts into Neo4j, has the LLM explain each alert, and posts a colour
 backend/     AlertTriage.cs (spec/result/entity/service), AlertTriageController.cs
 frontend/    Angular 22 Native-Federation remote `c7ClinicalAlerts`: list · add · view
              scripts/gen-patients.mjs bakes data/synthetic-patients/index.json into the member dropdown (npm prebuild)
-skills/      triage-patient: currently a STUB that posts sample-result.json (SYN-001's full expected result)
+skills/      triage-patient: SKILL.md (agent: graph write + explain) + triage.sh (status, engine, guard, write-back)
+             triage.py, rules/, data/, write-triage.cypher are COPIED in by sync-engine.sh (gitignored)
 ```
 
 ## Build and deploy (from the repo root)
 
 ```bash
+./extensions/clinical-alerts/sync-engine.sh          # copy engine/ + data/ into the skill (every build)
 ./scripts/build-extension.sh  extensions/clinical-alerts
 ./scripts/deploy-extension.sh extensions/clinical-alerts/dist/extension.zip
 ```

@@ -54,6 +54,8 @@ export interface TriageResult {
   alerts?: TriageAlert[];
   summary?: string | null;
   graphStatus?: string | null;
+  /** BaseResult: the platform stores status-callback faults here. */
+  faults?: string[] | null;
 }
 
 export interface AlertTriageSpec {
