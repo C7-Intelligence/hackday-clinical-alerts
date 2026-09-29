@@ -1,0 +1,6 @@
+bin/
+obj/
+sdk-packages/
+
+# NuGet state written by the builder container
+.local/

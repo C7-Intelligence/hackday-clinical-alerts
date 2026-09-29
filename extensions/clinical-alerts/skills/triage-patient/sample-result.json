@@ -1,0 +1,104 @@
+{
+  "patientId": "SYN-001",
+  "patientName": "David Park",
+  "age": 51,
+  "sex": "male",
+  "memberSince": "2024-05-01",
+  "asOf": "2026-09-29",
+  "engineVersion": "0.1.0",
+  "synthetic": true,
+  "counts": { "clinical": 1, "nudge": 2, "informational": 3 },
+  "alerts": [
+    {
+      "id": "SYN-001:CLIN-TRT-ERYTHROCYTOSIS",
+      "ruleId": "CLIN-TRT-ERYTHROCYTOSIS",
+      "tier": "clinical",
+      "priority": 1,
+      "title": "Hematocrit 54.8% on testosterone therapy",
+      "detail": "Hematocrit 54.8% on 2026-09-26 (up from 52.1% and 49.5%) on testosterone cypionate 180 mg weekly.",
+      "recommendedAction": "Care team review today: consider holding or reducing TRT dose and repeat CBC.",
+      "evidence": [
+        { "kind": "lab", "code": "4544-3", "display": "Hematocrit", "value": 54.8, "unit": "%", "date": "2026-09-26" },
+        { "kind": "lab", "code": "4544-3", "display": "Hematocrit", "value": 52.1, "unit": "%", "date": "2026-06-15" },
+        { "kind": "lab", "code": "4544-3", "display": "Hematocrit", "value": 49.5, "unit": "%", "date": "2026-02-20" },
+        { "kind": "medication", "display": "Testosterone cypionate 180 mg IM weekly", "date": "2024-06-10" }
+      ],
+      "rationale": null
+    },
+    {
+      "id": "SYN-001:NUDGE-GLP1-HYDRATION",
+      "ruleId": "NUDGE-GLP1-HYDRATION",
+      "tier": "nudge",
+      "priority": 2,
+      "title": "BUN 26 mg/dL on tirzepatide: likely under-hydrated",
+      "detail": "BUN 26 mg/dL with creatinine 1.1 mg/dL on 2026-09-26 (BUN:creatinine 23.6) on tirzepatide 7.5 mg weekly.",
+      "recommendedAction": "Hydration outreach this week: daily fluid goal, nausea management, repeat BMP in 2–4 weeks.",
+      "evidence": [
+        { "kind": "lab", "code": "3094-0", "display": "BUN", "value": 26, "unit": "mg/dL", "date": "2026-09-26" },
+        { "kind": "lab", "code": "2160-0", "display": "Creatinine", "value": 1.1, "unit": "mg/dL", "date": "2026-09-26" },
+        { "kind": "lab", "code": "2160-0", "display": "Creatinine", "value": 1.0, "unit": "mg/dL", "date": "2026-06-15" },
+        { "kind": "medication", "display": "Tirzepatide (GIP/GLP-1) 7.5 mg SC weekly", "date": "2026-04-01" }
+      ],
+      "rationale": null
+    },
+    {
+      "id": "SYN-001:NUDGE-TRT-BP-ELEVATED",
+      "ruleId": "NUDGE-TRT-BP-ELEVATED",
+      "tier": "nudge",
+      "priority": 2,
+      "title": "Blood pressure 148/94 on testosterone therapy",
+      "detail": "Two consecutive readings at or above 140/90 mmHg: 144/90 on 2026-09-12 and 148/94 on 2026-09-26, on testosterone cypionate 180 mg weekly.",
+      "recommendedAction": "Recheck BP at the 10/02 TRT visit and review TRT dose; consider home BP monitoring.",
+      "evidence": [
+        { "kind": "vital", "code": "8480-6", "display": "Systolic blood pressure", "value": 148, "unit": "mmHg", "date": "2026-09-26" },
+        { "kind": "vital", "code": "8462-4", "display": "Diastolic blood pressure", "value": 94, "unit": "mmHg", "date": "2026-09-26" },
+        { "kind": "vital", "code": "8480-6", "display": "Systolic blood pressure", "value": 144, "unit": "mmHg", "date": "2026-09-12" },
+        { "kind": "vital", "code": "8462-4", "display": "Diastolic blood pressure", "value": 90, "unit": "mmHg", "date": "2026-09-12" },
+        { "kind": "medication", "display": "Testosterone cypionate 180 mg IM weekly", "date": "2024-06-10" }
+      ],
+      "rationale": null
+    },
+    {
+      "id": "SYN-001:INFO-NEW-RESULT",
+      "ruleId": "INFO-NEW-RESULT",
+      "tier": "informational",
+      "priority": 3,
+      "title": "New normal result: creatinine 1.1 mg/dL",
+      "detail": "Creatinine 1.1 mg/dL on 2026-09-26 is within the normal range.",
+      "recommendedAction": "No action needed; share the result in the member portal.",
+      "evidence": [
+        { "kind": "lab", "code": "2160-0", "display": "Creatinine", "value": 1.1, "unit": "mg/dL", "date": "2026-09-26" }
+      ],
+      "rationale": null
+    },
+    {
+      "id": "SYN-001:INFO-UPCOMING-APPT",
+      "ruleId": "INFO-UPCOMING-APPT",
+      "tier": "informational",
+      "priority": 3,
+      "title": "Upcoming HRT/TRT visit on 2026-10-02",
+      "detail": "HRT/TRT appointment on 2026-10-02 (in 3 days): TRT dose review.",
+      "recommendedAction": "Confirm the visit and put today's hematocrit and blood pressure alerts on the agenda.",
+      "evidence": [
+        { "kind": "appointment", "display": "HRT/TRT: TRT dose review", "date": "2026-10-02" }
+      ],
+      "rationale": null
+    },
+    {
+      "id": "SYN-001:INFO-WEIGHT-PROGRESS",
+      "ruleId": "INFO-WEIGHT-PROGRESS",
+      "tier": "informational",
+      "priority": 3,
+      "title": "Down 14.0% body weight on tirzepatide",
+      "detail": "Body weight 96.3 kg on 2026-09-26, down from 112.0 kg on 2026-03-28 before starting tirzepatide on 2026-04-01 (-15.7 kg, -14.0%).",
+      "recommendedAction": "Celebrate the milestone with the member and continue the current plan.",
+      "evidence": [
+        { "kind": "vital", "code": "29463-7", "display": "Body weight", "value": 96.3, "unit": "kg", "date": "2026-09-26" },
+        { "kind": "vital", "code": "29463-7", "display": "Body weight", "value": 112.0, "unit": "kg", "date": "2026-03-28" },
+        { "kind": "medication", "display": "Tirzepatide (GIP/GLP-1) 7.5 mg SC weekly", "date": "2026-04-01" }
+      ],
+      "rationale": null
+    }
+  ],
+  "summary": null
+}
