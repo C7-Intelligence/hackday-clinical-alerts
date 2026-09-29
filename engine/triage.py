@@ -91,6 +91,9 @@ def triage(patient: dict, as_of: date, include_informational: bool = True) -> di
             alerts.extend(rule(patient, as_of))
         except PatientDataError as exc:
             raise TriageError(f"patient record is invalid: {exc}") from None
+    # CONTRACT §3: optional evidence fields are omitted rather than null, and value is numeric only.
+    for a in alerts:
+        a["evidence"] = [{k: v for k, v in ev.items() if v is not None} for ev in a["evidence"]]
     if not include_informational:
         alerts = [a for a in alerts if a["tier"] != "informational"]
     alerts.sort(key=lambda a: (a["priority"], a["ruleId"]))

@@ -101,6 +101,10 @@ class ResultShape(unittest.TestCase):
                     for ev in a["evidence"]:
                         self.assertIn(ev["kind"], kinds)
                         self.assertTrue(ev["display"])
+                        if "value" in ev:  # backend types value as double?
+                            self.assertIsInstance(ev["value"], (int, float))
+                            self.assertNotIsInstance(ev["value"], bool)
+                        self.assertNotIn(None, ev.values())
 
     def test_header_fields_for_syn_001(self):
         r = self.results["SYN-001"]
