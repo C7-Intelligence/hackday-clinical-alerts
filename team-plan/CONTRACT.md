@@ -22,7 +22,7 @@ Convenience: `python3 triage.py --patient-id SYN-003 --data-dir <dir>` resolves 
 - Extension id: `c7.clinical-alerts` · Name: **Clinical Alerts**
 - Resource: `AlertTriage` · subType `alert-triage` · restSegment `extensions/alerttriages`
 - Provisioning mode: agent-based (a skill runs in the ticket, like the `helloworld` sample)
-- Left nav: collapsible section **Clinical** → item **Alert Triage** (mat icon `medical_services`)
+- Left nav: collapsible section **Clinical** → item **Alert Triage** (icon `stethoscope`; section icon `heart-pulse`. `medical_services` isn't in the portal's icon set)
 
 **Spec**
 
@@ -71,6 +71,8 @@ Convenience: `python3 triage.py --patient-id SYN-003 --data-dir <dir>` resolves 
 - `tier` is one of `clinical` | `nudge` | `informational`. `priority` is 1 for clinical, 2 for nudge, 3 for informational.
 - Alerts are sorted by priority, then ruleId.
 - `evidence[].kind` is one of `lab` | `vital` | `medication` | `condition` | `immunization` | `screening` | `appointment` | `demographic`.
+- `evidence[].value` must be a **number** or omitted, never a string. The backend types it as `double?` and rejects strings, so report blood pressure as separate systolic and diastolic evidence rows, as the data already does. `code`, `unit`, `date` and `value` are optional.
+- `graphStatus` (`written` | `skipped`, optional) is added by the **skill** after the graph step, not by the engine.
 - `rationale` (per alert) and `summary` (per patient) are `null` from the engine. The **agent** fills them
   in the skill when `explain` is true: 1–2 plain-language sentences each, which must not contradict `detail`.
 - UI colours: clinical `#C62828`, nudge `#EF6C00`, informational `#1565C0`.
