@@ -22,7 +22,7 @@ Convenience: `python3 triage.py --patient-id SYN-003 --data-dir <dir>` resolves 
 - Extension id: `c7.clinical-alerts` · Name: **Clinical Alerts**
 - Resource: `AlertTriage` · subType `alert-triage` · restSegment `extensions/alerttriages`
 - Provisioning mode: agent-based (a skill runs in the ticket, like the `helloworld` sample)
-- Left nav: collapsible section **Clinical** → item **Alert Triage** (mat icon `medical_services`)
+- Left nav: collapsible section **Clinical** → item **Alert Triage** (icon `stethoscope`; section icon `heart-pulse`. `medical_services` isn't in the portal's icon set)
 
 **Spec**
 
